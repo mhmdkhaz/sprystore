@@ -1,0 +1,365 @@
+:root {
+  --colorOrange: #ff7315;
+  --colorWhite: #fff;
+  --colorBlack: #232020;
+  --colorGray: #6b778d;
+  --colorGrayLight: #f4f4f4;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: "Texturina", serif;
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: var(--colorWhite);
+}
+.informationMain h1 {
+  color: #232020;
+}
+.informationMain h1 span {
+  color: var(--colorOrange);
+}
+.informationMain p {
+  color: var(--colorGray);
+}
+
+.buttonMain {
+  background-color: var(--colorBlack);
+  color: var(--colorWhite);
+  padding: 10px 15px;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+.buttonMain:hover {
+  background-color: var(--colorOrange);
+}
+
+/* start left navbar */
+.bannerSliderMain header .containerFluid .leftContern h4 {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 15px;
+}
+.bannerSliderMain header .containerFluid .leftContern h4 a {
+  color: var(--colorOrange);
+}
+/* start right contert */
+.bannerSliderMain header .containerFluid .rightContent ul li {
+  background-color: rgb(0, 0, 0, 0.5);
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+.bannerSliderMain header .containerFluid .rightContent ul li:hover {
+  background-color: var(--colorOrange);
+}
+
+.bannerSliderMain
+  header
+  .containerFluid
+  .rightContent
+  ul
+  .shooping
+  button
+  span {
+  text-transform: capitalize;
+}
+/* start in navbar */
+.bannerSliderMain header nav h1 span {
+  color: var(--colorOrange);
+}
+.bannerSliderMain header nav ul {
+  display: flex;
+}
+.bannerSliderMain header nav ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  flex-grow: 1;
+  text-transform: capitalize;
+  margin-left: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  font-weight: 600;
+  color: var(--colorWhite);
+}
+.bannerSliderMain header nav ul li:hover {
+  color: var(--colorOrange);
+}
+.bannerSliderMain header nav .openNav {
+  background-color: var(--colorWhite);
+  padding: 10px;
+  color: var(--colorOrange);
+  display: none;
+}
+@media only screen and (max-width: 1024px) {
+  .bannerSliderMain header nav .openNav {
+    display: block;
+  }
+  .bannerSliderMain header nav ul {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--colorBlack);
+    width: 80%;
+    z-index: 10;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+  }
+  .bannerSliderMain header nav ul li {
+    margin: 10px 20px;
+  }
+}
+/* start left navbar */
+
+.bannerHead {
+  background-image: url("../images/posts/asset\ 23.jpeg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+}
+.bannerHead::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(14, 13, 13, 0.59);
+}
+.bannerHead h1 {
+  font-family: Oswald, sans-serif;
+  color: var(--colorWhite);
+}
+.bannerHead .pathHome .home {
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+.bannerHead .pathHome .home:hover {
+  color: var(--colorOrange);
+}
+
+/* start log in */
+.overlayLogin {
+  background-color: #3a3535;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  z-index: -1;
+  padding: 3rem;
+  opacity: 0;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+.overlayLogin form {
+  background-color: var(--colorBlack);
+  padding: 3rem 25px;
+}
+@media (max-width: 676px) {
+  .overlayLogin {
+    padding: 25px;
+  }
+  .overlayLogin form {
+    width: 80vw;
+  }
+}
+.overlayLogin form div label {
+  color: var(--colorWhite);
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+.overlayLogin form div span {
+  color: #6c757d;
+  font-size: 14px;
+}
+.overlayLogin form div input {
+  padding: 10px;
+  color: #6b778d;
+}
+/* end log in */
+
+/* start search */
+.OverlaySearch {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(35, 32, 32, 0.7);
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  z-index: -5;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+.OverlaySearch input[type="text"] {
+  color: #6b778d;
+}
+/* end search */
+/* login and search */
+.overlayLogin .close i,
+.OverlaySearch .close i {
+  border: 2px solid var(--colorBlack);
+  padding: 10px 15px;
+}
+/* login and search */
+
+/* ---------------------- start in productsShop ----------------------------- */
+.productsShop .productShop .productImg:hover > .overlay {
+  animation: ovelay 0.3s linear infinite alternate;
+  -webkit-animation: ovelay 0.3s linear;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+@keyframes ovelay {
+  0% {
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+  }
+  100% {
+    background-color: none;
+    z-index: 1;
+  }
+}
+.productsShop .productShop .productImg figure img:nth-child(2) {
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+.productsShop .productShop .productImg:hover > figure img:nth-child(2) {
+  opacity: 0;
+}
+
+.productsShop .productShop .productImg .icon {
+  position: absolute;
+  top: 50%;
+  right: -100%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.productsShop .productShop .productImg .icon li {
+  background-color: var(--colorWhite);
+  cursor: pointer;
+}
+.productsShop .productShop .productImg .icon li {
+  animation: myfirst 0.3s linear 2s;
+  -webkit-animation: myfirst 0.3s linear 2s;
+}
+.productsShop .productShop .productImg .icon li:hover {
+  background-color: var(--colorOrange);
+  color: var(--colorWhite);
+}
+.productsShop .productShop .productImg:hover .icon {
+  right: 30px;
+}
+
+.productsShop .productShop .productImg .addCart {
+  background-color: var(--colorBlack);
+  color: var(--colorGrayLight);
+  position: absolute;
+  bottom: -50%;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  cursor: pointer;
+}
+.productsShop .productShop .productImg .addCart:hover {
+  background-color: var(--colorOrange);
+}
+.productsShop .productShop .productImg:hover .addCart {
+  bottom: 0;
+}
+
+.productsShop .productShop .productImg .productContent .title {
+  color: var(--colorBlack);
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.productsShop .productShop .productContent .title:hover {
+  color: var(--colorOrange);
+}
+.productsShop .productShop .productContent del {
+  color: var(--colorGray);
+}
+
+.productsShop .productShop .productContent .priceCount {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+.productsShop .productShop .productContent .priceCount .price,
+.productsShop .productShop .productContent .priceCount .count {
+  color: var(--colorBlack);
+}
+.productsShop .productShop .productContent .priceCount .price span,
+.productsShop .productShop .productContent .priceCount .count span {
+  color: var(--colorGray);
+}
+
+/* Page additions shooping */
+.shoopingProductCard {
+  padding: 10px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+/* ---------------------- end in productsShop ----------------------------- */

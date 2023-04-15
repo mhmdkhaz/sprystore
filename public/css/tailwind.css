@@ -708,6 +708,10 @@ video {
   margin-bottom: 1rem;
 }
 
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
 .ml-0 {
   margin-left: 0px;
 }
@@ -846,6 +850,10 @@ video {
 
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .grid-cols-5 {
@@ -2333,6 +2341,17 @@ img::after {
 }
 
 /* --------------------------------------------- end in page contact ------------------------------------------ */
+
+/* --------------------------------------------- start in page preview ------------------------------------------ */
+
+.storePreview .previewRight h1 {
+  color: var(--colorBlack);
+}
+
+.storePreview .previewRight .item_price  {
+}
+
+/* --------------------------------------------- end in page preview ------------------------------------------ */
 
 @media (min-width: 640px) {
   .sm\:grid-cols-2 {

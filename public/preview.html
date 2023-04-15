@@ -26,6 +26,7 @@
     <section class="bannerSliderMain relative">
       <!-- ----------------- start in header ----------------- -->
       <header class="absolute left-0 top-0 w-full z-10">
+        <!-- start in navbar -->
         <!-- start in navbar  -->
         <div class="w-full px-4 lg:px-8">
           <div
@@ -49,10 +50,10 @@
                 <li
                   class="shooping mx-0 lg:mx-5 text-white cursor-pointer rounded-3xl px-4 py-2.5"
                 >
-                  <a href="../public/myCart.html" class="myCart">
+                  <button class="myCart">
                     <span>my cart</span>
                     <i class="fa fa-shopping-cart"></i>
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -75,7 +76,7 @@
               <li class="active"><a href="index.html">home</a></li>
               <li><a href="about.html">about</a></li>
               <li><a href="shooping.html">shooping</a></li>
-              <li><a href="blog.htm">blog</a></li>
+              <li><a href="blog.html">blog</a></li>
               <li><a href="contact.html">contact</a></li>
             </ul>
             <i class="fa-solid fa-bars-staggered openNav rounded-md"></i>
@@ -144,249 +145,84 @@
     <!-- --------------- start in header main --------------------- -->
     <section class="bannerHead pt-40 pb-8 relative">
       <nav class="flex flex-col items-center relative z-10">
-        <h1 class="uppercase text-4xl font-semibold tracking-wider">
-          about us
-        </h1>
+        <h1 class="uppercase text-4xl font-semibold tracking-wider">preview</h1>
         <ul
           class="pathHome flex justify-center items-center text-white uppercase my-2"
         >
           <h2 class="home cursor-pointer"><a href="index.html">home</a></h2>
           <i class="fa fa-angle-double-right mx-2 text-center opacity-90"></i>
-          <h2>about</h2>
+          <h2>preview</h2>
         </ul>
       </nav>
     </section>
     <!-- --------------- end in header main --------------------- -->
-    <section class="ecomerceGrids">
+
+    <!-- start preview product -->
+    <section class="storePreview">
       <div class="container mx-auto p-8 lg:px-48">
-        <div class="grid grid-cols-12 gap-8">
-          <div
-            class="ecommerceleft rounded-md p-12 col-start-1 col-end-13 lg:col-start-1 lg:col-end-5"
-          >
-            <!-- search -->
-            <div class="searchEcomerce informationMain">
-              <h1 class="uppercase text-xl">search <span>here</span></h1>
-              <form class="mt-3 flex">
-                <input
-                  type="text"
-                  class="p-3 text-base outline-none rounded-tl-md rounded-bl-md w-full"
-                  placeholder="search here"
-                />
-                <i
-                  class="fa-solid fa-magnifying-glass rounded-tr-md rounded-br-md h-14 p-5"
-                ></i>
-              </form>
-            </div>
-            <!-- categories -->
-            <div class="categoriesEcomerce informationMain mt-10">
-              <h1 class="uppercase text-xl">product <span>CATEGORIES</span></h1>
-              <ul>
-                <li class="capitalize flex justify-between items-center py-4">
-                  <p class="text">Accessories</p>
-                  <span class="number px-2 py-1 rounded-md">17</span>
-                </li>
-
-                <li class="capitalize flex justify-between items-center py-4">
-                  <p class="text">Suits</p>
-                  <span class="number px-2 py-1 rounded-md">18</span>
-                </li>
-
-                <li class="capitalize flex justify-between items-center py-4">
-                  <p class="text">Footwear</p>
-                  <span class="number px-2 py-1 rounded-md">12</span>
-                </li>
-
-                <li class="capitalize flex justify-between items-center py-4">
-                  <p class="text">Blazers</p>
-                  <span class="number px-2 py-1 rounded-md">10</span>
-                </li>
-              </ul>
-            </div>
-            <!-- filter price -->
-            <div class="filterPriceEcomerce informationMain mt-10">
-              <h1 class="uppercase text-xl">filter by<span> price</span></h1>
-            </div>
-            <!-- discount -->
-            <div class="discount informationMain mt-10">
-              <h1 class="uppercase text-xl"><span>d</span>iscount</h1>
-              <form class="mt-3">
-                <div class="flex items-center py-2">
-                  <input type="checkbox" class="checkDiscount" />
-                  <label class="ml-3">15% or more</label>
-                </div>
-
-                <div class="flex items-center py-2">
-                  <input type="checkbox" class="checkDiscount" />
-                  <label class="ml-3">20% or more</label>
-                </div>
-
-                <div class="flex items-center py-2">
-                  <input type="checkbox" class="checkDiscount" />
-                  <label class="ml-3">35% or more</label>
-                </div>
-
-                <div class="flex items-center py-2">
-                  <input type="checkbox" class="checkDiscount" />
-                  <label class="ml-3">55% or more</label>
-                </div>
-
-                <div class="flex items-center py-2">
-                  <input type="checkbox" class="checkDiscount" />
-                  <label class="ml-3">65% or more</label>
-                </div>
-
-                <div class="flex items-center py-2">
-                  <input type="checkbox" class="checkDiscount" />
-                  <label class="ml-3">75% or more</label>
-                </div>
-              </form>
-            </div>
-            <!-- customer color -->
-            <div class="customerColor informationMain mt-10">
-              <h1 class="uppercase text-xl"><span>d</span>iscount</h1>
-              <div class="relative">
-                <input type="checkbox" class="checkColor" id="_checkbox" />
-                <label for="_checkbox" class="checkedColor">
-                  <div id="tick_mark"></div>
-                </label>
-              </div>
-            </div>
-            <!-- customer stars -->
-            <div class="single-gd informationMain mt-10">
-              <h1 class="uppercase text-xl"><span>CUSTOMER </span>RATINGS</h1>
-              <ul class="ratingshyny mt-3">
-                <li>
-                  <a href="#">
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span>5.0</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa-regular fa-star" aria-hidden="true"></span>
-                    <span>4.0</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span
-                      class="fa-solid fa-star-half-stroke"
-                      aria-hidden="true"
-                    ></span>
-                    <span class="fa-regular fa-star" aria-hidden="true"></span>
-                    <span>3.5</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa-regular fa-star" aria-hidden="true"></span>
-                    <span class="fa-regular fa-star" aria-hidden="true"></span>
-                    <span>3.0</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span class="fa fa-star" aria-hidden="true"></span>
-                    <span
-                      class="fa-solid fa-star-half-stroke"
-                      aria-hidden="true"
-                    ></span>
-                    <span class="fa-regular fa-star" aria-hidden="true"></span>
-                    <span class="fa-regular fa-star" aria-hidden="true"></span>
-                    <span>2.5</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <!-- PRODUCTS -->
-            <div class="recent informationMain mt-10">
-              <h1 class="uppercase text-xl"><span>RECENT </span>PRODUCTS</h1>
-              <div
-                class="contentTextProduct flex items-center justify-start mt-5"
-              >
-                <img
-                  src="../public/images/clothes/asset 20.jpeg"
-                  class="w-1/4 h-auto rounded-md"
-                  alt=""
-                />
-                <div class="text ml-5">
-                  <h4 class="capitalize">White T-Shirt</h4>
-                  <p>466.00$</p>
-                </div>
-              </div>
-              <div
-                class="contentTextProduct flex items-center justify-start mt-5"
-              >
-                <img
-                  src="../public/images/clothes/asset 21.jpeg"
-                  class="w-1/4 h-auto rounded-md"
-                  alt=""
-                />
-                <div class="text ml-5">
-                  <h4 class="capitalize">blue T-Shirt</h4>
-                  <p>466.00$</p>
-                </div>
-              </div>
-            </div>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="previewLeft">
+            <img src="../public/images/clothes/asset_10.jpeg" alt="" />
           </div>
-          <div
-            class="ecommerceRight col-start-1 col-end-13 lg:col-start-5 lg:col-end-13"
-          >
-            <!-- top bar -->
-            <div class="topBar flex justify-between items-center">
-              <h1 class="capitalize font-semibold">Showing All 9 Results</h1>
-              <select class="px-5 py-3 cursor-pointer outline-none rounded-md">
-                <option value="menu_order" selected="selected">
-                  Default Sorting
-                </option>
-                <option value="popularity">Sort by Popularity</option>
-                <option value="rating">Sort by Average rating</option>
-                <option value="date">Sort by latest</option>
-                <option value="price">Sort by Price: low to high</option>
-                <option value="price-desc">Sort by Price: high to low</option>
-              </select>
-            </div>
-            <!-- end top bar -->
-            <!-- start shooping product -->
-            <section class="productsShop my-4">
-              <div
-                class="contentsProduct grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-              ></div>
-            </section>
-            <!-- end shooping product -->
+          <div class="previewRight col-span-2">
+            <h1 class="capitalize text-3xl mb-5 leading-10 font-semibold">
+              Striped Men Round Neck Yellow T-Shirt
+            </h1>
+            <div class="caption flex">
+              <ul class="rating-single flex">
+                <li>
+                  <a href="#">
+                    <span
+                      class="fa fa-star yellow-star"
+                      aria-hidden="true"
+                    ></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span
+                      class="fa fa-star yellow-star"
+                      aria-hidden="true"
+                    ></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span
+                      class="fa fa-star yellow-star"
+                      aria-hidden="true"
+                    ></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span
+                      class="fa fa-star-half-o yellow-star"
+                      aria-hidden="true"
+                    ></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span
+                      class="fa fa-star-half yellow-star"
+                      aria-hidden="true"
+                    ></span>
+                  </a>
+                </li>
+              </ul>
 
-            <!-- start card shoooping -->
-            <section
-              class="cardShooping fixed top-10 right-1/3 bg-red-100 rounded-md"
-            >
-              <div class="cartShooping p-5 w-72">
-                <div class="flex justify-between">
-                  <h1 class="capitalize">cart</h1>
-                  <i class="closeCart fa-solid fa-xmark cursor-pointer"></i>
-                </div>
-                <ul class="listCart"></ul>
-              </div>
-            </section>
-            <!-- end card shoooping -->
+              <h6>
+                <span class="item_price">$575</span>
+                <del>$1,199</del> Free Delivery
+              </h6>
+            </div>
           </div>
         </div>
       </div>
     </section>
+    <!-- end preview product -->
+
     <!--  ---------------------- start in footer  -------------------- -->
     <footer>
       <div class="container mx-auto py-5 px-4 lg:px-36">

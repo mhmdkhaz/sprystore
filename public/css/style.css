@@ -966,3 +966,12 @@ img::after {
   color: var(--colorBlack);
 }
 /* --------------------------------------------- end in page contact ------------------------------------------ */
+
+/* --------------------------------------------- start in page preview ------------------------------------------ */
+.storePreview .previewRight h1 {
+  color: var(--colorBlack);
+}
+.storePreview .previewRight .item_price  {
+  
+}
+/* --------------------------------------------- end in page preview ------------------------------------------ */

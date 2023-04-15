@@ -11,17 +11,13 @@ let openClose = () => {
   openLogAndSearch.forEach((open) => {
     open.onclick = () => {
       let datashow = document.querySelector(open.dataset.show);
-      datashow.style.opacity = "1";
-      datashow.style.zIndex = "10";
-      datashow.style.height = "100%";
+      datashow.style.right = "0";
     };
   });
   closeLogAndSearch.forEach((close) => {
     close.onclick = () => {
       let datashow = document.querySelector(close.dataset.show);
-      datashow.style.opacity = "0";
-      datashow.style.zIndex = "-5";
-      datashow.style.height = "0";
+      datashow.style.right = "-100%";
     };
   });
 };
@@ -115,7 +111,7 @@ function addDataFromFetchInShooping(dataFromFetch) {
                     </figure>
                     <ul class="icon">
                       <li class="rounded-full px-3 py-3 text-center mb-3">
-                        <i class="fa-regular fa-eye"></i>
+                       <a href="preview.html"> <i class="fa-regular fa-eye"></i></a>
                       </li>
                       <li class="rounded-full px-3 py-3 text-center">
                         <i class="fa-solid fa-bag-shopping"></i>
@@ -157,7 +153,7 @@ function styleCartShooping() {
 
 getInfoLocal();
 
-// check array is contain elemetn
+// check array is contain element
 let infoToArray = [];
 if (window.localStorage.getItem("item")) {
   infoToArray = JSON.parse(window.localStorage.getItem("item"));
@@ -179,31 +175,34 @@ function getInforFromShooping() {
   });
 }
 
-function pushInfromationToArray(titleInfoCart, priceInfoCart) {
+function pushInfromationToArray(titleInfoCart, priceInfoCart, countItesm) {
   const objInfo = {
     id: Date.now(),
     price: priceInfoCart,
     title: titleInfoCart,
+    count: countItesm,
   };
   infoToArray.push(objInfo);
+
+  setInformationToCart(infoToArray, objInfo);
   setInfoLocal(infoToArray);
-  setInformationToCart(infoToArray);
 }
 
-function setInformationToCart(getInforArray) {
+function setInformationToCart(getInforArray, objectChangeCount) {
   let contentListCart = document.querySelector(".cardShooping .listCart");
   contentListCart.innerHTML = "";
   getInforArray.forEach((item) => {
     contentListCart.innerHTML += `
-                      <li class="flex flex-col justify-center my-1" data-id=${item.id}>
+                      <li class="flex flex-col justify-center my-1" data-id=${item.id} data-price=${item.price}>
                       <h2 class="titleCartShooping break-all text-center mb-2">${item.title}</h2>
                       <div class="flex flex-row justify-between w-full items-center py-0.5 px-1">
                         <input
                           type="number"
                           class="countClothes w-8 h-5 outline-none rounded-md text-xs text-center"
+                          value=${item.count}
                         />
                         <p class="priceCartShooping">${item.price}</p>
-                                                <span class=" flex justify-center">
+                                <span class=" flex justify-center">
                           <i
                             class="reomveElement fa-solid fa-xmark mx-2 rounded-md px-1 py-0 w-5 h-5 text-sm cursor-pointer opacity-70"
                           ></i>
@@ -211,29 +210,41 @@ function setInformationToCart(getInforArray) {
                       </div>
                     </li>
     `;
-    removeElementFromCart(item.id);
-    changeCountClothes(item.price);
+    removeElementFromCart();
+    changeTotalPriceElement(objectChangeCount);
   });
 }
 
-function changeCountClothes(priceChange) {
+function changeTotalPriceElement(objectChangeCount) {
   let countCloth = document.querySelectorAll(".countClothes");
-  let changePrice = document.querySelector(".priceCartShooping");
   countCloth.forEach((count) => {
     count.onkeyup = function () {
-      changePrice.innerHTML = "";
-      changePrice.innerHTML = priceChange.match(/\d+/)[0] * count.value;
+      // The change count in input
+      let countValue = count.value;
+      let getId = count.parentElement.parentElement.dataset.id;
+      let getPrice = count.parentElement.parentElement.dataset.price;
+      infoToArray.forEach((objectCount) => {
+        if (objectCount.id == getId) {
+          objectCount.count = countValue;
+          setInfoLocal(infoToArray);
+        }
+      });
+
+      // The total price of the item
+      placePrice = count.parentElement.children[1];
+      placePrice.innerHTML = getPrice.match(/\d+/)[0] * count.value;
     };
   });
 }
 
-function removeElementFromCart(itemId) {
-  let removeElement = document.querySelectorAll(".reomveElement");  
+function removeElementFromCart() {
+  let removeElement = document.querySelectorAll(".reomveElement");
   removeElement.forEach((clickRemove) => {
     clickRemove.addEventListener("click", () => {
       let pareentListClothe =
         clickRemove.parentNode.parentElement.parentElement;
-      reomveElementFromLocal(itemId);
+      let getDataId = pareentListClothe.dataset.id;
+      reomveElementFromLocal(getDataId);
       pareentListClothe.remove();
     });
   });
@@ -241,9 +252,7 @@ function removeElementFromCart(itemId) {
 
 function reomveElementFromLocal(itemId) {
   infoToArray = infoToArray.filter((item) => item.id != itemId);
-  console.log(infoToArray);
-  // let getKey = Object.keys(bird);
-  // localStorage.removeItem(getKey);
+  setInfoLocal(infoToArray);
 }
 
 function setInfoLocal(informationLocal) {
@@ -257,3 +266,6 @@ function getInfoLocal() {
     setInformationToCart(toJson);
   }
 }
+
+
+// ------------- preview page --------------

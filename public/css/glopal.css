@@ -154,7 +154,6 @@ body {
   background: rgba(14, 13, 13, 0.59);
 }
 .bannerHead h1 {
-  font-family: Oswald, sans-serif;
   color: var(--colorWhite);
 }
 .bannerHead .pathHome .home {

@@ -971,7 +971,119 @@ img::after {
 .storePreview .previewRight h1 {
   color: var(--colorBlack);
 }
-.storePreview .previewRight .item_price  {
-  
+.storePreview .previewRight ul li {
+  color: var(--colorGray);
+  font-size: 12px;
+}
+.storePreview .previewRight h6 .itemPrice {
+  color: var(--colorOrange);
+}
+.storePreview .previewRight h6 del {
+  color: var(--colorGray);
+}
+.storePreview .previewRight .discountPreview li {
+  font-size: 16px;
+}
+.storePreview .previewRight .descountpreview p {
+  color: var(--colorGray);
 }
 /* --------------------------------------------- end in page preview ------------------------------------------ */
+
+/*  */
+.cart {
+  width: 100%;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .cart-row {
+    width: auto;
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .cart-product-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cart-product-media {
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  .cart-price-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  .cart-price-cell {
+    width: 100%;
+  }
+
+  .cart-header {
+    display: none;
+  }
+  .cart-row td:not(:last-child) {
+    border: none;
+  }
+
+  .cart-product-button {
+    width: 30px;
+    height: 30px;
+  }
+  .cart-product-button i {
+    font-size: 0.9rem;
+  }
+
+  .cart-qnt-input {
+    display: flex;
+    flex: 1;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+
+  .cart-product-subtotal {
+    width: 100%;
+    display: block;
+  }
+
+  .cart-product-subtotal span::before {
+    content: "Цена: ";
+    position: absolute;
+    left: 0;
+  }
+
+  .cart-qnt {
+    flex: 1;
+    width: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  .cart-qnt-counter {
+    margin-right: 0px;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.cart-qnt-input {
+  text-align: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.cart-qnt-input::-webkit-outer-spin-button,
+.cart-qnt-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.cart-qnt-input {
+  -moz-appearance: textfield;
+}
+
+/*  */

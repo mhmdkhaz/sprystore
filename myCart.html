@@ -142,86 +142,232 @@
     </section>
     <!-- ----------------- end in header ----------------- -->
 
-    <!-- --------------- start in header main --------------------- -->
-    <section class="bannerHead pt-40 pb-8 relative">
-      <nav class="flex flex-col items-center relative z-10">
-        <h1 class="uppercase text-4xl font-semibold tracking-wider">preview</h1>
-        <ul
-          class="pathHome flex justify-center items-center text-white uppercase my-2"
-        >
-          <h2 class="home cursor-pointer"><a href="index.html">home</a></h2>
-          <i class="fa fa-angle-double-right mx-2 text-center opacity-90"></i>
-          <h2>preview</h2>
-        </ul>
-      </nav>
-    </section>
-    <!-- --------------- end in header main --------------------- -->
+    <!--  -->
+    <table class="table cart">
+      <thead class="cart-header">
+        <tr>
+          <th>Название</th>
+          <th>Кол-во</th>
+          <th colspan="2" class="has-text-right pl-0">Всего</th>
+        </tr>
+      </thead>
 
-    <!-- start preview product -->
-    <section class="storePreview">
-      <div class="container mx-auto p-8 lg:px-48">
-        <div class="grid grid-cols-3 gap-4">
-          <div class="previewLeft">
-            <img src="../public/images/clothes/asset_10.jpeg" alt="" />
-          </div>
-          <div class="previewRight col-span-2">
-            <h1 class="capitalize text-3xl mb-5 leading-10 font-semibold">
-              Striped Men Round Neck Yellow T-Shirt
-            </h1>
-            <div class="caption flex">
-              <ul class="rating-single flex">
-                <li>
-                  <a href="#">
-                    <span
-                      class="fa fa-star yellow-star"
-                      aria-hidden="true"
-                    ></span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span
-                      class="fa fa-star yellow-star"
-                      aria-hidden="true"
-                    ></span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span
-                      class="fa fa-star yellow-star"
-                      aria-hidden="true"
-                    ></span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span
-                      class="fa fa-star-half-o yellow-star"
-                      aria-hidden="true"
-                    ></span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span
-                      class="fa fa-star-half yellow-star"
-                      aria-hidden="true"
-                    ></span>
-                  </a>
-                </li>
-              </ul>
+      <tfoot>
+        <tr class="cart-price-row">
+          <td colspan="2">Доставка:</td>
+          <td class="nowrap cart-price-cell has-text-right pl-0">
+            999,00 руб.
+          </td>
+        </tr>
 
-              <h6>
-                <span class="item_price">$575</span>
-                <del>$1,199</del> Free Delivery
-              </h6>
+        <tr class="cart-price-row is-size-5 has-text-weight-bold">
+          <td colspan="2">ИТОГО:</td>
+          <td class="nowrap cart-price-cell has-text-right pl-0">
+            17 679,00 руб.
+          </td>
+        </tr>
+      </tfoot>
+
+      <tbody>
+        <tr class="cart-row">
+          <td class="cart-product-media cart-product-row">
+            <a class="nowrap m-0" href="/store/playstation-5-kopiya">
+              <div class="media">
+                <figure class="media-left my-0 ml-0 mr-3">
+                  <p class="image is-64x64">
+                    <img src="https://via.placeholder.com/150" />
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong class="title is-6"> Playstation…</strong><br />
+                      <span class="nowrap tag block is-info is-light"
+                        >24 000,00 руб.</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </td>
+          <td class="cart-product-row cart-qnt">
+            <div class="cart-qnt-counter field has-addons m-0">
+              <p class="control">
+                <button class="cart-product-button button">
+                  <div class="icon-text">
+                    <span class="icon">
+                      <i class="fas fa-minus"></i>
+                    </span>
+                  </div>
+                </button>
+              </p>
+              <p class="control">
+                <input
+                  class="input cart-qnt-input"
+                  size="1"
+                  value="2"
+                  type="number"
+                  placeholder="2"
+                />
+              </p>
+              <p class="control">
+                <button class="cart-product-button button">
+                  <div class="icon-text">
+                    <span class="icon">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                  </div>
+                </button>
+              </p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end preview product -->
+
+            <button class="cart-product-button button">
+              <span class="icon">
+                <i class="fas fa-trash"></i>
+              </span>
+            </button>
+          </td>
+          <td class="cart-product-subtotal has-text-right nowrap">
+            <div class="is-relative"><span>280,00 руб.</span></div>
+          </td>
+        </tr>
+        <tr class="cart-row">
+          <td class="cart-product-media cart-product-row">
+            <a class="nowrap m-0" href="/store/playstation-5-kopiya">
+              <div class="media">
+                <figure class="media-left my-0 ml-0 mr-3">
+                  <p class="image is-64x64">
+                    <img src="https://via.placeholder.com/150" />
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong class="title is-6"> Playstation…</strong><br />
+                      <span class="nowrap tag block is-info is-light"
+                        >24 000,00 руб.</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </td>
+          <td class="cart-product-row cart-qnt">
+            <div class="cart-qnt-counter field has-addons m-0">
+              <p class="control">
+                <button class="cart-product-button button">
+                  <div class="icon-text">
+                    <span class="icon">
+                      <i class="fas fa-minus"></i>
+                    </span>
+                  </div>
+                </button>
+              </p>
+              <p class="control">
+                <input
+                  class="input cart-qnt-input"
+                  size="1"
+                  value="2"
+                  type="number"
+                  placeholder="2"
+                />
+              </p>
+              <p class="control">
+                <button class="cart-product-button button">
+                  <div class="icon-text">
+                    <span class="icon">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                  </div>
+                </button>
+              </p>
+            </div>
+
+            <button class="cart-product-button button">
+              <span class="icon">
+                <i class="fas fa-trash"></i>
+              </span>
+            </button>
+          </td>
+          <td class="cart-product-subtotal has-text-right nowrap">
+            <div class="is-relative"><span>280,00 руб.</span></div>
+          </td>
+        </tr>
+        <tr class="cart-row">
+          <td class="cart-product-media cart-product-row">
+            <a class="nowrap m-0" href="/store/playstation-5-kopiya">
+              <div class="media">
+                <figure class="media-left my-0 ml-0 mr-3">
+                  <p class="image is-64x64">
+                    <img src="https://via.placeholder.com/150" />
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong class="title is-6"> Playstation…</strong><br />
+                      <span class="nowrap tag block is-info is-light"
+                        >24 000,00 руб.</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </td>
+          <td class="cart-product-row cart-qnt">
+            <div class="cart-qnt-counter field has-addons m-0">
+              <p class="control">
+                <button class="cart-product-button button">
+                  <div class="icon-text">
+                    <span class="icon">
+                      <i class="fas fa-minus"></i>
+                    </span>
+                  </div>
+                </button>
+              </p>
+              <p class="control">
+                <input
+                  class="input cart-qnt-input"
+                  size="1"
+                  value="2"
+                  type="number"
+                  placeholder="2"
+                />
+              </p>
+              <p class="control">
+                <button class="cart-product-button button">
+                  <div class="icon-text">
+                    <span class="icon">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                  </div>
+                </button>
+              </p>
+            </div>
+
+            <button class="cart-product-button button">
+              <span class="icon">
+                <i class="fas fa-trash"></i>
+              </span>
+            </button>
+          </td>
+          <td class="cart-product-subtotal has-text-right nowrap">
+            <div class="is-relative"><span>280,00 руб.</span></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <p>
+        <span class="btn btn-secondary">Очистить</span>
+        <a href="" class="btn btn-primary">Оформить заказ</a>
+      </p>
+    </div>
+    <!--  -->
 
     <!--  ---------------------- start in footer  -------------------- -->
     <footer>

@@ -88,6 +88,7 @@ async function loopData() {
 
 loopData();
 
+let i = 0;
 // add data from fetch api in page shooping
 function addDataFromFetchInShooping(dataFromFetch) {
   let allProductContent = document.querySelector(
@@ -95,7 +96,7 @@ function addDataFromFetchInShooping(dataFromFetch) {
   );
   if (allProductContent) {
     allProductContent.innerHTML += ` 
-              <div class="productShop shoopingProductCard">
+              <div class="productShop shoopingProductCard" data-id=${i}>
                   <div class="productImg relative overflow-hidden">
                     <figure class="cursor-pointer h-96">
                       <img
@@ -138,6 +139,7 @@ function addDataFromFetchInShooping(dataFromFetch) {
                   </div>
                 </div>
   `;
+    i++;
   }
   getInforFromShooping();
 }
@@ -150,7 +152,7 @@ function styleCartShooping() {
     mainCardShooping.style.transform = "scale(0)";
   });
 }
-
+// window.localStorage.clear();
 getInfoLocal();
 
 // check array is contain element
@@ -165,30 +167,37 @@ function getInforFromShooping() {
     addToCart.addEventListener("click", () => {
       styleCartShooping();
       let parrenCartShooping = addToCart.parentNode.parentElement;
+      let parrenCartShoopingId = addToCart.parentNode.parentElement.dataset.id;
+
       let titleInfoCart =
         parrenCartShooping.querySelector(".productContent a").textContent;
       let priceInfoCart = parrenCartShooping.querySelector(
         ".priceCount .price span"
       ).textContent;
-      pushInfromationToArray(titleInfoCart, priceInfoCart);
+      pushInfromationToArray(
+        parrenCartShoopingId,
+        priceInfoCart,
+        titleInfoCart
+      );
     });
   });
 }
 
-function pushInfromationToArray(titleInfoCart, priceInfoCart, countItesm) {
+function pushInfromationToArray(idShooping, priceInfoCart, titleInfoCart) {
   const objInfo = {
-    id: Date.now(),
+    id: idShooping,
     price: priceInfoCart,
     title: titleInfoCart,
-    count: countItesm,
+    count: "",
   };
   infoToArray.push(objInfo);
 
-  setInformationToCart(infoToArray, objInfo);
+  setInformationToCart(infoToArray, objInfo.id);
   setInfoLocal(infoToArray);
 }
 
-function setInformationToCart(getInforArray, objectChangeCount) {
+console.log(infoToArray);
+function setInformationToCart(getInforArray, idElement) {
   let contentListCart = document.querySelector(".cardShooping .listCart");
   contentListCart.innerHTML = "";
   getInforArray.forEach((item) => {
@@ -210,12 +219,13 @@ function setInformationToCart(getInforArray, objectChangeCount) {
                       </div>
                     </li>
     `;
+
     removeElementFromCart();
-    changeTotalPriceElement(objectChangeCount);
+    changeTotalPriceElement();
   });
 }
 
-function changeTotalPriceElement(objectChangeCount) {
+function changeTotalPriceElement() {
   let countCloth = document.querySelectorAll(".countClothes");
   countCloth.forEach((count) => {
     count.onkeyup = function () {
@@ -223,6 +233,9 @@ function changeTotalPriceElement(objectChangeCount) {
       let countValue = count.value;
       let getId = count.parentElement.parentElement.dataset.id;
       let getPrice = count.parentElement.parentElement.dataset.price;
+
+      // console.log(count.parentElement.parentElement.dataset.id);
+
       infoToArray.forEach((objectCount) => {
         if (objectCount.id == getId) {
           objectCount.count = countValue;
@@ -243,6 +256,7 @@ function removeElementFromCart() {
     clickRemove.addEventListener("click", () => {
       let pareentListClothe =
         clickRemove.parentNode.parentElement.parentElement;
+
       let getDataId = pareentListClothe.dataset.id;
       reomveElementFromLocal(getDataId);
       pareentListClothe.remove();
@@ -266,6 +280,5 @@ function getInfoLocal() {
     setInformationToCart(toJson);
   }
 }
-
 
 // ------------- preview page --------------

@@ -22,13 +22,21 @@ body {
   text-align: left;
   background-color: var(--colorWhite);
 }
-.informationMain h1 {
+body,
+body a,
+body li,
+body p,
+.buttonMain,
+input {
+  font-family: "Lato", sans-serif;
+}
+.title {
   color: #232020;
 }
-.informationMain h1 span {
+.title .titleSpan {
   color: var(--colorOrange);
 }
-.informationMain p {
+.subtitle {
   color: var(--colorGray);
 }
 

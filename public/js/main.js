@@ -1,4 +1,6 @@
 // start in navbar
+// window.localStorage.clear();
+
 let openNavbar = document.querySelector(".openNav");
 let navbarList = document.querySelector("nav ul");
 openNavbar.addEventListener("click", () => {
@@ -77,7 +79,7 @@ async function fetchUrl(url) {
 
 async function loopData() {
   try {
-    const dataLoop = await fetchUrl("json/shooping.json");
+    const dataLoop = await fetchUrl("public/json/shooping.json");
     for (let index = 0; index < dataLoop.length; index++) {
       addDataFromFetchInShooping(dataLoop[index]);
     }
@@ -88,12 +90,12 @@ async function loopData() {
 
 loopData();
 
-let i = 0;
+let allProductContent,
+  i = 0;
 // add data from fetch api in page shooping
 function addDataFromFetchInShooping(dataFromFetch) {
-  let allProductContent = document.querySelector(
-    ".productsShop .contentsProduct"
-  );
+  allProductContent = document.querySelector(".productsShop .contentsProduct");
+
   if (allProductContent) {
     allProductContent.innerHTML += ` 
               <div class="productShop shoopingProductCard" data-id=${i}>
@@ -111,7 +113,7 @@ function addDataFromFetchInShooping(dataFromFetch) {
                       />
                     </figure>
                     <ul class="icon">
-                      <li class="rounded-full px-3 py-3 text-center mb-3">
+                      <li class="rounded-full px-3 py-3 text-center mb-3 fromShooping">
                        <a href="preview.html"> <i class="fa-regular fa-eye"></i></a>
                       </li>
                       <li class="rounded-full px-3 py-3 text-center">
@@ -142,6 +144,7 @@ function addDataFromFetchInShooping(dataFromFetch) {
     i++;
   }
   getInforFromShooping();
+  getPathFromShooping();
 }
 
 function styleCartShooping() {
@@ -152,13 +155,40 @@ function styleCartShooping() {
     mainCardShooping.style.transform = "scale(0)";
   });
 }
-// window.localStorage.clear();
+
+// ---------------------
 getInfoLocal();
+// ---------------------
 
 // check array is contain element
 let infoToArray = [];
 if (window.localStorage.getItem("item")) {
   infoToArray = JSON.parse(window.localStorage.getItem("item"));
+}
+// not repeat element for infotoarray
+// let uniqueArray = Array.from(
+//   new Set(infoToArray.map((obj) => JSON.stringify(obj)))
+// ).map((str) => JSON.parse(str));
+
+// let myArray = Array.from(new Set(infoToArray.map((obj) => obj.id))).map((id) =>
+//   infoToArray.find((obj) => obj.id == id)
+// );
+// uniqueArray = myArray.filter((obj, index, arr) => {
+//   return !arr.some((otherObj, otherIndex) => {
+//     return otherIndex > index && otherObj.id == obj.id;
+//   });
+// });
+
+let uniqueArray = [];
+let removeDuplicate = [];
+function makeUniquArray() {
+  infoToArray.forEach((ele) => {
+    if (!removeDuplicate.includes(ele.id)) {
+      removeDuplicate.push(ele.id);
+      uniqueArray.push(ele);
+    }
+  });
+  return uniqueArray;
 }
 
 function getInforFromShooping() {
@@ -174,35 +204,90 @@ function getInforFromShooping() {
       let priceInfoCart = parrenCartShooping.querySelector(
         ".priceCount .price span"
       ).textContent;
+
       pushInfromationToArray(
         parrenCartShoopingId,
         priceInfoCart,
         titleInfoCart
       );
+
+      makeUniquArray();
+      console.log(uniqueArray);
+
+      setInformationToCart(uniqueArray);
+      setInfoLocal(infoToArray);
     });
   });
 }
+
+function getPathFromShooping() {
+  let fromShooping = document.querySelectorAll(".productShop .fromShooping");
+  fromShooping.forEach((el) => {
+    el.addEventListener("click", () => {
+      let parentMainShop = el.closest(".productShop");
+      let getImgPathFromShooping = parentMainShop
+        .querySelector("figure img")
+        .getAttribute("src");
+      // set path to local storage
+      localStorage.setItem("path", getImgPathFromShooping);
+
+      previewInfoSetLocal(parentMainShop);
+    });
+  });
+}
+
+function setPathtoPreview() {
+  let getPathFromLocal = window.localStorage.getItem("path");
+  document
+    .querySelector(".storePreview .previewLeft img")
+    .setAttribute("src", getPathFromLocal);
+}
+setPathtoPreview();
+
+function previewInfoSetLocal(parentMainShop) {
+  let parentMainShopId = parentMainShop.dataset.id;
+  let dataObject = JSON.parse(localStorage.getItem("item"));
+  const objectExists = dataObject.find((obj) => obj.id == parentMainShopId);
+  // to string for set local
+  const objectExistsToString = JSON.stringify(objectExists);
+  localStorage.setItem("countPreivew", objectExistsToString);
+}
+
+function previewInfoGetLocal() {
+  let countPlace = document.querySelector(".storePreview .input-group-field");
+  let getCount = localStorage.getItem("countPreivew");
+  let getCountToParse = JSON.parse(getCount); // to parse for get local
+
+  uniqueArray = makeUniquArray();
+  uniqueArray.forEach((objectCount) => {
+    countPlace.value = objectCount.count;
+    if (objectCount.id == getCountToParse.id) {
+      countPlace.onkeyup = function () {
+        objectCount.count = countPlace.value;
+        setInfoLocal(uniqueArray);
+      };
+    }
+  });
+}
+previewInfoGetLocal();
 
 function pushInfromationToArray(idShooping, priceInfoCart, titleInfoCart) {
   const objInfo = {
     id: idShooping,
     price: priceInfoCart,
     title: titleInfoCart,
-    count: "",
+    count: 1,
   };
   infoToArray.push(objInfo);
-
-  setInformationToCart(infoToArray, objInfo.id);
-  setInfoLocal(infoToArray);
 }
 
-console.log(infoToArray);
-function setInformationToCart(getInforArray, idElement) {
+function setInformationToCart(getInforArray) {
   let contentListCart = document.querySelector(".cardShooping .listCart");
-  contentListCart.innerHTML = "";
-  getInforArray.forEach((item) => {
-    contentListCart.innerHTML += `
-                      <li class="flex flex-col justify-center my-1" data-id=${item.id} data-price=${item.price}>
+  if (contentListCart) {
+    contentListCart.innerHTML = "";
+    getInforArray.forEach((item) => {
+      contentListCart.innerHTML += `
+                    <li class="flex flex-col justify-center my-1" data-id=${item.id} data-price=${item.price}>
                       <h2 class="titleCartShooping break-all text-center mb-2">${item.title}</h2>
                       <div class="flex flex-row justify-between w-full items-center py-0.5 px-1">
                         <input
@@ -219,33 +304,32 @@ function setInformationToCart(getInforArray, idElement) {
                       </div>
                     </li>
     `;
-
-    removeElementFromCart();
-    changeTotalPriceElement();
-  });
+    });
+  }
+  removeElementFromCart();
+  changeCountPriceElement();
 }
 
-function changeTotalPriceElement() {
+function changeCountPriceElement() {
   let countCloth = document.querySelectorAll(".countClothes");
   countCloth.forEach((count) => {
     count.onkeyup = function () {
-      // The change count in input
-      let countValue = count.value;
+      // change count in input
       let getId = count.parentElement.parentElement.dataset.id;
-      let getPrice = count.parentElement.parentElement.dataset.price;
+      let countValue = count.value;
+      uniqueArray.forEach((objectCount) => {
+        //total price of the item
+        let getPrice = count.parentElement.parentElement.dataset.price;
+        let placePrice = count.parentElement.children[1];
+        let subTotalPrice = getPrice.match(/\d+/)[0] * count.value;
+        placePrice.innerHTML = `${subTotalPrice}$`;
 
-      // console.log(count.parentElement.parentElement.dataset.id);
-
-      infoToArray.forEach((objectCount) => {
         if (objectCount.id == getId) {
           objectCount.count = countValue;
-          setInfoLocal(infoToArray);
+          objectCount.price = subTotalPrice;
+          setInfoLocal(uniqueArray);
         }
       });
-
-      // The total price of the item
-      placePrice = count.parentElement.children[1];
-      placePrice.innerHTML = getPrice.match(/\d+/)[0] * count.value;
     };
   });
 }

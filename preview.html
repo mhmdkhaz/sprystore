@@ -162,12 +162,13 @@
       <div class="container mx-auto p-8 lg:px-48">
         <div class="grid grid-cols-3 gap-4">
           <div class="previewLeft">
-            <img src="../public/images/clothes/asset_10.jpeg" alt="" />
+            <img src="public/images/clothes/asset_10.jpeg" alt="" />
           </div>
           <div class="previewRight col-span-2">
             <h1 class="capitalize text-3xl leading-10 font-semibold">
               Striped Men Round Neck Yellow T-Shirt
             </h1>
+            <!-- free and rating -->
             <div class="caption flex items-center">
               <ul class="rating-single flex my-4">
                 <li>
@@ -217,6 +218,7 @@
                 <del class="mx-3">$1,199</del> Free Delivery
               </h6>
             </div>
+            <!-- discountPreview -->
             <ul class="discountPreview mb-4">
               <li class="mb-2">
                 <span class="font-bold">Special Price</span>
@@ -235,14 +237,64 @@
                 Extra 5% off* with Axis Bank Buzz Credit Card
               </li>
             </ul>
+            <!-- descountpreview -->
             <div class="descountpreview mb-4">
               <h5 class="font-bold capitalize text-2xl">Description:</h5>
-              <p class="text-lg mt-2">
+              <p class="capitalize text-lg mt-2">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Facere, ratione et ipsam velit explicabo deleniti obcaecati a,
                 numquam, unde quisquam quas quae accusamus eveniet magni. Nobis
                 iure et porro aut..
               </p>
+            </div>
+            <!-- description -->
+            <div class="description flex justify-between mb-4">
+              <div class="highlights">
+                <h5 class="font-bold capitalize text-xl">Highlights:</h5>
+                <ul class="mt-2 list-decimal list-inside">
+                  <li>Neck : Round Neck</li>
+                  <li>Fit : Regular</li>
+                  <li>Sleeve : Half Sleeve</li>
+                  <li>Material : Pure Cutton</li>
+                </ul>
+              </div>
+              <div class="service">
+                <h5 class="font-bold capitalize text-xl">Services:</h5>
+                <ul class="mt-2 list-decimal list-inside">
+                  <li>30 Day Return Policy</li>
+                  <li>Cash On Delivery Available</li>
+                </ul>
+              </div>
+              <ul class="services"></ul>
+            </div>
+            <!-- show  -->
+            <div class="input-group plus-minus-input flex">
+              <div class="input-group-button rounded-full">
+                <button
+                  type="button"
+                  class="button hollow"
+                  data-quantity="minus"
+                  data-field="quantity"
+                >
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+              </div>
+              <input
+                class="input-group-field rounded-md"
+                type="number"
+                name="quantity"
+                value="0"
+              />
+              <div class="input-group-button rounded-full">
+                <button
+                  type="button"
+                  class="button hollow"
+                  data-quantity="plus"
+                  data-field="quantity"
+                >
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>

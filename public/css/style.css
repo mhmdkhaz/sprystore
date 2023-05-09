@@ -971,9 +971,12 @@ img::after {
 .storePreview .previewRight h1 {
   color: var(--colorBlack);
 }
-.storePreview .previewRight ul li {
-  color: var(--colorGray);
+.storePreview .previewRight .rating-single li {
+  color: var(--colorBlack);
   font-size: 12px;
+}
+.storePreview .previewRight .discountPreview li {
+  color: var(--colorGray);
 }
 .storePreview .previewRight h6 .itemPrice {
   color: var(--colorOrange);
@@ -986,6 +989,41 @@ img::after {
 }
 .storePreview .previewRight .descountpreview p {
   color: var(--colorGray);
+}
+.storePreview .previewRight .description .highlights h5,
+.storePreview .previewRight .description .service h5 {
+  color: var(--colorBlack);
+}
+.storePreview .previewRight .description ul li {
+  margin: 8px 0;
+  color: var(--colorGray);
+}
+
+.plus-minus-input {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.plus-minus-input .input-group-field {
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--colorGray);
+  color: var(--colorOrange);
+}
+
+.plus-minus-input .input-group-field::-webkit-inner-spin-button,
+.plus-minus-input .input-group-field ::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.plus-minus-input .input-group-button {
+  padding: 0.25em 0.8em;
+  border: 1px solid var(--colorGray);
+  color: var(--colorOrange);
 }
 /* --------------------------------------------- end in page preview ------------------------------------------ */
 
@@ -1237,7 +1275,7 @@ img::after {
   border: 2px solid var(--colorOrange);
   background-color: rgb(255, 115, 21, 0.1);
 }
-.reply form label{
+.reply form label {
   margin: 10px 0;
 }
 /* -------------------- -----------------------  */

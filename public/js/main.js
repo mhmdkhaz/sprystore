@@ -18,23 +18,17 @@ window.onload = function () {
 };
 
 // start in back to top
-window.onscroll = function () {
-  const btnToTop = document.querySelector(".btnToTop svg");
-  if (
-    btnToTop ||
-    document.body.scrollTop > 80 ||
-    document.documentElement.scrollTop > 80
-  ) {
+let btnToTop = document.querySelector(".btnToTop svg");
+function toTop() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
     btnToTop.style.opacity = "1";
   } else {
     btnToTop.style.opacity = "0";
   }
-  btnToTop.addEventListener("click", () => {
-    window.scroll({
-      top: 0,
-      behavior: "smooth",
-    });
-  });
+}
+
+window.onscroll = () => {
+  toTop();
 };
 
 // start in log in

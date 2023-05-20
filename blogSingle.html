@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,21 +16,28 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Outfit:wght@500&family=Texturina:ital,opsz,wght@1,12..72,100&display=swap"
-            rel="stylesheet"
-            />
+            rel="stylesheet" />
         <!-- start in splide -->
         <link rel="stylesheet" href="public/splide/css/splide.min.css" />
         <script src="public/splide/js/splide.min.js"></script>
     </head>
+
     <body>
+        <!-- start in loader -->
+        <div class="loader">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- end in loader -->
         <!-- start in banner content -->
         <section class="bannerSliderMain relative">
             <!-- ----------------- start in header ----------------- -->
             <header class="absolute left-0 top-0 w-full z-10">
                 <!-- start in navbar  -->
                 <div class="w-full px-4 lg:px-8 ">
-                    <div
-                        class="containerFluid flex flex-row justify-between
+                    <div class="containerFluid flex flex-row justify-between
                         items-center
                         my-3">
                         <div class="leftContern hidden lg:block">
@@ -41,20 +49,19 @@
                         </div>
                         <div class="rightContent w-full lg:w-auto">
                             <ul class="flex flex-row justify-between">
-                                <li
-                                    class="userLogSearch user userlog text-white
+                                <li class="userLogSearch user userlog text-white
                                     cursor-pointer
-                                    rounded-full px-4 py-2.5"
-                                    data-show=".overlayLogin">
+                                    rounded-full px-4 py-2.5" data-show=".overlayLogin">
                                     <i class="fa fa-user"></i>
                                 </li>
-                                <li
-                                    class="shooping mx-0 lg:mx-5 text-white
+                                <li class="shooping mx-0 lg:mx-5 text-white
                                     cursor-pointer rounded-3xl
                                     px-4 py-2.5">
                                     <button class="myCart">
-                                        <span>my cart</span>
-                                        <i class="fa fa-shopping-cart"></i>
+                                        <a href="myCart.html" class="myCart">
+                                            <span>my cart</span>
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </a>
                                     </button>
                                 </li>
                             </ul>
@@ -65,19 +72,25 @@
                         <h1 class="font-black text-3xl uppercase text-white">
                             spry<span>s</span>tore
                         </h1>
-                        <div
-                            class="search ml-0 lg:ml-24 font-extrabold text-xl
+                        <div class="search ml-0 lg:ml-24 font-extrabold text-xl
                             uppercase text-white flex ">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <span class="userLogSearch hidden lg:block ml-2"
-                                data-show=".OverlaySearch">search here</span>
+                            <span class="userLogSearch hidden lg:block ml-2" data-show=".OverlaySearch">search
+                                here</span>
                         </div>
-                        <ul class=" rounded-md">
-                            <a href="index.html" class="active"><li>home</li></a>
-                            <a href="about.html"><li>about</li></a>
-                            <a href="shooping.html"> <li>shooping</li> </a>
-                            <a href="blog.htm"><li>blog</li></a>
-                            <a href="contact.html"><li>contact</li></a>
+                        <ul class="rounded-md">
+                            <li class="active"><a href="index.html">home</a></li>
+                            <li><a href="about.html">about</a></li>
+                            <li><a href="shooping.html">shooping</a></li>
+                            <!-- drop down  -->
+                            <li class="drop">
+                                <button class="openDrop">blog</button>
+                                <div class="flex flex-col contetnDrop rounded-md">
+                                    <a href="blog.html">blog</a>
+                                    <a href="blogSingle.html">blog Single</a>
+                                </div>
+                            </li>
+                            <li><a href="contact.html">contact</a></li>
                         </ul>
                         <i class="fa-solid fa-bars-staggered openNav
                             rounded-md"></i>
@@ -85,9 +98,7 @@
                 </div>
                 <!-- start in log in  -->
                 <div class="overlayLogin flex flex-col items-center">
-                    <div
-                        data-show=".overlayLogin"
-                        class="closeLogSearch close absolute top-2 left-3
+                    <div data-show=".overlayLogin" class="closeLogSearch close absolute top-2 left-3
                         text-white">
                         <i class="fa-solid fa-xmark rounded-md cursor-pointer"></i>
                     </div>
@@ -107,42 +118,26 @@
                             <input type="checkbox" class="rounded-md" />
                             <p class="capitalize text-white ml-3">Remember me</p>
                         </div>
-                        <input
-                            type="submit"
-                            value="sign in"
-                            style="background-color: #ff7315"
-                            class="buttonMain w-full mt-3 rounded-md capitalize
+                        <input type="submit" value="sign in" style="background-color: #ff7315" class="buttonMain w-full mt-3 rounded-md capitalize
                             leading-6
-                            cursor-pointer"
-                            />
+                            cursor-pointer" />
                     </form>
                 </div>
                 <!-- end in log in  -->
                 <!-- start in search  -->ّ
                 <div class="OverlaySearch flex flex-row justify-center
                     items-center">
-                    <div
-                        class="closeLogSearch close absolute top-2 left-3
-                        text-white"
-                        data-show=".OverlaySearch">
+                    <div class="closeLogSearch close absolute top-2 left-3
+                        text-white" data-show=".OverlaySearch">
                         <i class="fa-solid fa-xmark rounded-md cursor-pointer"></i>
                     </div>
                     <form action="" class="flex justify-center w-full
                         lg:w-5/12">
-                        <input
-                            type="text"
-                            placeholder="keyword"
-                            class="h-14 rounded-tl-md rounded-bl-md px-5 py-4"
-                            style="width: 60%"
-                            />
-                        <input
-                            type="submit"
-                            value="search"
-                            class="buttonMain h-14 rounded-tr-md rounded-br-md
+                        <input type="text" placeholder="keyword" class="h-14 rounded-tl-md rounded-bl-md px-5 py-4"
+                            style="width: 60%" />
+                        <input type="submit" value="search" class="buttonMain h-14 rounded-tr-md rounded-br-md
                             capitalize
-                            cursor-pointer"
-                            style="width: 20%"
-                            />
+                            cursor-pointer" style="width: 20%" />
                     </form>
                 </div>
                 <!-- end in search  -->
@@ -171,8 +166,7 @@
             <div class="container mx-auto py-20 px-10 md:px-16 xl:px-80">
                 <div class="grid grid-cols-1">
                     <div class="blogContent mb-10">
-                        <img src="../public/images/bg2.jpg"
-                            class="rounded-md" alt="" />
+                        <img src="../public/images/bg2.jpg" class="rounded-md" alt="" />
                         <div class="dateStandard flex my-3">
                             <p class="capitalize">by admin</p>
                             <span class="line mx-2">|</span>
@@ -185,26 +179,26 @@
                             Standard post with a single image,There are many
                             variations that
                             focuses on presenting.
-                        </h2>
-                        <p class="blogSubtiltle my-5 text-base">
-                            Vivamus a ligula quam. Ut blandit eu leo non
-                            suscipit. Duis
-                            feugiat tortor sed.Nulla quis lorem neque,
-                            mattis venenatis
-                            lectus. In interdum ullamcorper dolor eu
-                            mattis.Nulla quis lorem
-                            neque,Nulla quis lorem neque, mattis venenatis
-                            lectus. In
-                            interdum ullamcorper dolor eu mattis.Nulla quis
-                            lorem neque,
-                            mattis venenatis lectus.
-                        </p>
-                        <ul class="flex blogIcon">
-                            <li class="facebook"><i class="fa-brands
+                            </h2>
+                            <p class="blogSubtiltle my-5 text-base">
+                                Vivamus a ligula quam. Ut blandit eu leo non
+                                suscipit. Duis
+                                feugiat tortor sed.Nulla quis lorem neque,
+                                mattis venenatis
+                                lectus. In interdum ullamcorper dolor eu
+                                mattis.Nulla quis lorem
+                                neque,Nulla quis lorem neque, mattis venenatis
+                                lectus. In
+                                interdum ullamcorper dolor eu mattis.Nulla quis
+                                lorem neque,
+                                mattis venenatis lectus.
+                            </p>
+                            <ul class="flex blogIcon">
+                                <li class="facebook"><i class="fa-brands
                                     fa-facebook-f"></i>facebook</li>
-                            <li class="twitter"><i class="fa-brands fa-twitter"></i>twitter</li>
-                            <li class="google"><i class="fa-brands fa-google"></i></li>
-                        </ul>
+                                <li class="twitter"><i class="fa-brands fa-twitter"></i>twitter</li>
+                                <li class="google"><i class="fa-brands fa-google"></i></li>
+                            </ul>
                     </div>
                     <!-- details -->
                     <div class="details mb-10">
@@ -221,25 +215,19 @@
                     <div class="singleImg mb-10">
                         <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
                             <figure>
-                                <img src="public/images/blogSingle/left1.jpg"
-                                    class="rounded-md"
-                                    alt="">
+                                <img src="public/images/blogSingle/left1.jpg" class="rounded-md" alt="">
                             </figure>
                             <figure>
-                                <img src="public/images/blogSingle/left2.jpg"
-                                    class="rounded-md"
-                                    alt="">
+                                <img src="public/images/blogSingle/left2.jpg" class="rounded-md" alt="">
 
                             </figure>
                         </div>
                     </div>
                     <!-- explain -->
                     <p class="toExplain text-base mb-10">Vivamus a ligula quam.
-                        Ut blandit eu leo non suscipit. <a href="#"
-                            class="user">Anna Delpan</a> In interdum ullamcorper
+                        Ut blandit eu leo non suscipit. <a href="#" class="user">Anna Delpan</a> In interdum ullamcorper
                         dolor eu mattis.Nulla quis lorem neque,Nulla quis lorem
-                        neque, mattis venenatis lectus. <a href="#"
-                            class="user">Delpan Deo</a> In interdum ullamcorper
+                        neque, mattis venenatis lectus. <a href="#" class="user">Delpan Deo</a> In interdum ullamcorper
                         dolor eu mattis.Nulla quis lorem neque, mattis venenatis
                         lectus. Duis feugiat tortor sed.Nulla quis lorem neque,
                         mattis venenatis lectus. In interdum ullamcorper dolor
@@ -269,8 +257,7 @@
                     <div class="allAuthor">
                         <div class="author flex p-5 mb-10">
                             <figure>
-                                <img src="public/images/team/team2.jpg"
-                                    class="rounded-md" alt="">
+                                <img src="public/images/team/team2.jpg" class="rounded-md" alt="">
                             </figure>
                             <div class="content ml-8">
                                 <h2 class="capitalize mb-3 text-lg font-bold">lora
@@ -292,8 +279,7 @@
                         </div>
                         <div class="author flex p-5 mb-10 ml-0 lg:ml-12">
                             <figure>
-                                <img src="public/images/team/team1.jpg"
-                                    class="rounded-md" alt="">
+                                <img src="public/images/team/team1.jpg" class="rounded-md" alt="">
                             </figure>
                             <div class="content ml-8">
                                 <h2 class="capitalize mb-3 text-lg font-bold">William
@@ -321,17 +307,18 @@
                                 mb-3">LEAVE A <span class="titleSpan">reply</span></h1>
                             <p class="capitalize subtitle">Your email address
                                 will
-                                not be published. Required fields are *<p>
+                                not be published. Required fields are *
+                            <p>
                         </div>
                         <form action="">
                             <div class="nameEmail flex flex-col lg:flex-row ">
                                 <div class="flex flex-col w-full mr-10">
                                     <label class="capitalize">name</label>
-                                    <input type="text"  placeholder="your name">
+                                    <input type="text" placeholder="your name">
                                 </div>
                                 <div class="flex flex-col w-full ">
                                     <label class="capitalize">email</label>
-                                    <input type="email"  placeholder="your name">
+                                    <input type="email" placeholder="your name">
                                 </div>
                             </div>
                             <div class="webSite flex flex-col">
@@ -345,133 +332,132 @@
                             <button class="buttonMain rounded-md capitalize sticky left-full mt-8">post comment</button>
                         </form>
                     </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- ------------------- start in blog single information ---------------------------- -->
-                <!--  ---------------------- start in footer  -------------------- -->
-                <footer>
-                    <div class="container mx-auto py-5 px-4 lg:px-36">
-                        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                            <div class="partOne flex flex-col justify-center">
-                                <h1 class="font-black text-3xl uppercase
+                </div>
+            </div>
+        </section>
+        <!-- ------------------- start in blog single information ---------------------------- -->
+        <!--  ---------------------- start in footer  -------------------- -->
+        <footer>
+            <div class="container mx-auto py-5 px-4 lg:px-36">
+                <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                    <div class="partOne flex flex-col justify-center">
+                        <h1 class="font-black text-3xl uppercase
                                     text-white">
-                                    spry<span>s</span>tore
-                                </h1>
+                            spry<span>s</span>tore
+                        </h1>
+                        <p class="my-5">
+                            Lorem ipsum dolor sit amet,Ea consequuntur
+                            illum
+                            facere aperiam
+                            sequi optio consectetur.Vivamus a ligula
+                            quam. Ut
+                            blandit eu leo
+                            non suscipit.
+                        </p>
+                        <ul class="icon flex">
+                            <li>
+                                <a href="">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="">
+                                    <i class="fa-brands fa-google"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="partTow">
+                        <h1 class="capitalize text-xl text-white
+                                    font-extrabold
+                                    tracking-wider">
+                            Women's Day Special Offer All Branded
+                            Sandals are
+                            Flat 50%
+                            Discount
+                        </h1>
+                        <div class="grid grid-cols-1 gap-8 my-5
+                                    lg:grid-cols-2">
+                            <div class="useful">
+                                <h1 class="capitalize text-xl
+                                            tracking-wider">useful
+                                    links</h1>
+                                <div class="flex justify-between">
+                                    <ul>
+                                        <li>home</li>
+                                        <li>about</li>
+                                        <li>blog</li>
+                                        <li>contact</li>
+                                    </ul>
+                                    <ul>
+                                        <li>careers</li>
+                                        <li>privacy plicy</li>
+                                        <li>Terms and Conditions</li>
+                                        <li>Support</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="our">
+                                <h1 class="capitalize text-xl
+                                            tracking-wider">OUR
+                                    STORE</h1>
                                 <p class="my-5">
-                                    Lorem ipsum dolor sit amet,Ea consequuntur
-                                    illum
-                                    facere aperiam
-                                    sequi optio consectetur.Vivamus a ligula
-                                    quam. Ut
-                                    blandit eu leo
-                                    non suscipit.
+                                    49436 Broaddus Honey Court Avenue,
+                                    Madisonville KY 95020,
+                                    United States of America WE ACCEPT
                                 </p>
-                                <ul class="icon flex">
+                                <h6 class="capitalize text-white
+                                            text-xl">view
+                                    accept:</h6>
+                                <ul class="buy flex">
                                     <li>
                                         <a href="">
-                                            <i class="fa-brands fa-facebook-f"></i>
+                                            <i class="fa-brands
+                                                        fa-cc-visa"></i>
                                         </a>
                                     </li>
 
                                     <li>
                                         <a href="">
-                                            <i class="fa-brands fa-twitter"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="">
-                                            <i class="fa-brands fa-google"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="">
-                                            <i class="fa-brands fa-instagram"></i>
+                                            <i class="fa-brands
+                                                        fa-cc-amazon-pay"></i>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="partTow">
-                                <h1
-                                    class="capitalize text-xl text-white
-                                    font-extrabold
-                                    tracking-wider">
-                                    Women's Day Special Offer All Branded
-                                    Sandals are
-                                    Flat 50%
-                                    Discount
-                                </h1>
-                                <div class="grid grid-cols-1 gap-8 my-5
-                                    lg:grid-cols-2">
-                                    <div class="useful">
-                                        <h1 class="capitalize text-xl
-                                            tracking-wider">useful
-                                            links</h1>
-                                        <div class="flex justify-between">
-                                            <ul>
-                                                <li>home</li>
-                                                <li>about</li>
-                                                <li>blog</li>
-                                                <li>contact</li>
-                                            </ul>
-                                            <ul>
-                                                <li>careers</li>
-                                                <li>privacy plicy</li>
-                                                <li>Terms and Conditions</li>
-                                                <li>Support</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="our">
-                                        <h1 class="capitalize text-xl
-                                            tracking-wider">OUR
-                                            STORE</h1>
-                                        <p class="my-5">
-                                            49436 Broaddus Honey Court Avenue,
-                                            Madisonville KY 95020,
-                                            United States of America WE ACCEPT
-                                        </p>
-                                        <h6 class="capitalize text-white
-                                            text-xl">view
-                                            accept:</h6>
-                                        <ul class="buy flex">
-                                            <li>
-                                                <a href="">
-                                                    <i class="fa-brands
-                                                        fa-cc-visa"></i>
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="">
-                                                    <i class="fa-brands
-                                                        fa-cc-amazon-pay"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        <div
-                            class="copy grid grid-cols-1 justify-items-center
-                            lg:justify-items-stretch lg:grid-cols-2 my-5">
-                            <ul class="flex">
-                                <li>Privacy Policy</li>
-                                <li>Term of Service</li>
-                                <li>Customer Care</li>
-                            </ul>
-                            <p class="capitalize mt-3 lg:mt-0">
-                                © 2020 SpryStore. All rights reserved. Design by
-                                mohammed khazaa
-                            </p>
                         </div>
                     </div>
-                </footer>
-                <!--  ---------------------- end in footer -------------------- -->
-                <script src="public/js/main.js"></script>
-            </body>
-        </html>
+                </div>
+                <hr />
+                <div class="copy grid grid-cols-1 justify-items-center
+                            lg:justify-items-stretch lg:grid-cols-2 my-5">
+                    <ul class="flex">
+                        <li>Privacy Policy</li>
+                        <li>Term of Service</li>
+                        <li>Customer Care</li>
+                    </ul>
+                    <p class="capitalize mt-3 lg:mt-0">
+                        © 2020 SpryStore. All rights reserved. Design by
+                        mohammed khazaa
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <!--  ---------------------- end in footer -------------------- -->
+        <script src="public/js/main.js"></script>
+    </body>
+
+</html>

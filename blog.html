@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,21 +16,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@500&family=Texturina:ital,opsz,wght@1,12..72,100&display=swap"
-      rel="stylesheet"
-      />
+      rel="stylesheet" />
     <!-- start in splide -->
     <link rel="stylesheet" href="public/splide/css/splide.min.css" />
     <script src="public/splide/js/splide.min.js"></script>
   </head>
+
   <body>
+    <!-- start in loader -->
+    <div class="loader">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- end in loader -->
     <!-- start in banner content -->
     <section class="bannerSliderMain relative">
       <!-- ----------------- start in header ----------------- -->
       <header class="absolute left-0 top-0 w-full z-10">
         <!-- start in navbar  -->
         <div class="w-full px-4 lg:px-8 ">
-          <div
-            class="containerFluid flex flex-row justify-between items-center
+          <div class="containerFluid flex flex-row justify-between items-center
             my-3">
             <div class="leftContern hidden lg:block">
               <h4 class="text-white">
@@ -40,18 +48,17 @@
             </div>
             <div class="rightContent w-full lg:w-auto">
               <ul class="flex flex-row justify-between">
-                <li
-                  class="userLogSearch user userlog text-white cursor-pointer
-                  rounded-full px-4 py-2.5"
-                  data-show=".overlayLogin">
+                <li class="userLogSearch user userlog text-white cursor-pointer
+                  rounded-full px-4 py-2.5" data-show=".overlayLogin">
                   <i class="fa fa-user"></i>
                 </li>
-                <li
-                  class="shooping mx-0 lg:mx-5  text-white cursor-pointer rounded-3xl
+                <li class="shooping mx-0 lg:mx-5  text-white cursor-pointer rounded-3xl
                   px-4 py-2.5">
                   <button class="myCart">
-                    <span>my cart</span>
-                    <i class="fa fa-shopping-cart"></i>
+                    <a href="myCart.html" class="myCart">
+                      <span>my cart</span>
+                      <i class="fa fa-shopping-cart"></i>
+                    </a>
                   </button>
                 </li>
               </ul>
@@ -61,26 +68,30 @@
             <h1 class="font-black text-3xl uppercase text-white">
               spry<span>s</span>tore
             </h1>
-            <div
-              class="search ml-0 lg:ml-24 font-extrabold text-xl uppercase text-white">
+            <div class="search ml-0 lg:ml-24 font-extrabold text-xl uppercase text-white">
               <i class="fa-solid fa-magnifying-glass"></i>
               <span class="userLogSearch hidden lg:block" data-show=".OverlaySearch">search here</span>
             </div>
-            <ul class=" rounded-md">
-              <a href="index.html" class="active"><li>home</li></a>
-              <a href="about.html"><li>about</li></a>
-              <a href="shooping.html"> <li>shooping</li> </a>
-              <a href="blog.htm"><li>blog</li></a>
-              <a href="contact.html"><li>contact</li></a>
+              <ul class="rounded-md">
+              <li class="active"><a href="index.html">home</a></li>
+              <li><a href="about.html">about</a></li>
+              <li><a href="shooping.html">shooping</a></li>
+              <!-- drop down  -->
+              <li class="drop">
+                <button class="openDrop">blog</button>
+                <div class="flex flex-col contetnDrop rounded-md">
+                  <a href="blog.html">blog</a>
+                  <a href="blogSingle.html">blog Single</a>
+                </div>
+              </li>
+              <li><a href="contact.html">contact</a></li>
             </ul>
             <i class="fa-solid fa-bars-staggered openNav rounded-md"></i>
           </nav>
         </div>
         <!-- start in log in  -->
         <div class="overlayLogin flex flex-col items-center">
-          <div
-            data-show=".overlayLogin"
-            class="closeLogSearch close absolute top-2 left-3 text-white">
+          <div data-show=".overlayLogin" class="closeLogSearch close absolute top-2 left-3 text-white">
             <i class="fa-solid fa-xmark rounded-md cursor-pointer"></i>
           </div>
           <h1 class="capitalize text-2xl text-white text-center">login now</h1>
@@ -98,37 +109,21 @@
               <input type="checkbox" class="rounded-md" />
               <p class="capitalize text-white ml-3">Remember me</p>
             </div>
-            <input
-              type="submit"
-              value="sign in"
-              style="background-color: #ff7315"
-              class="buttonMain w-full mt-3 rounded-md capitalize leading-6
-              cursor-pointer"
-              />
+            <input type="submit" value="sign in" style="background-color: #ff7315" class="buttonMain w-full mt-3 rounded-md capitalize leading-6
+              cursor-pointer" />
           </form>
         </div>
         <!-- end in log in  -->
         <!-- start in search  -->ّ
         <div class="OverlaySearch flex flex-row justify-center items-center">
-          <div
-            class="closeLogSearch close absolute top-2 left-3 text-white"
-            data-show=".OverlaySearch">
+          <div class="closeLogSearch close absolute top-2 left-3 text-white" data-show=".OverlaySearch">
             <i class="fa-solid fa-xmark rounded-md cursor-pointer"></i>
           </div>
           <form action="" class="flex justify-center w-full lg:w-5/12">
-            <input
-              type="text"
-              placeholder="keyword"
-              class="h-14 rounded-tl-md rounded-bl-md px-5 py-4"
-              style="width: 60%"
-              />
-            <input
-              type="submit"
-              value="search"
-              class="buttonMain h-14 rounded-tr-md rounded-br-md capitalize
-              cursor-pointer"
-              style="width: 20%"
-              />
+            <input type="text" placeholder="keyword" class="h-14 rounded-tl-md rounded-bl-md px-5 py-4"
+              style="width: 60%" />
+            <input type="submit" value="search" class="buttonMain h-14 rounded-tr-md rounded-br-md capitalize
+              cursor-pointer" style="width: 20%" />
           </form>
         </div>
         <!-- end in search  -->
@@ -169,21 +164,20 @@
               <h1 class="blogTitle capitalize text-2xl">
                 Standard post with a single image,There are many variations that
                 focuses on presenting.
-              </h2>
-              <p class="blogSubtiltle my-5 text-base">
-                Vivamus a ligula quam. Ut blandit eu leo non suscipit. Duis
-                feugiat tortor sed.Nulla quis lorem neque, mattis venenatis
-                lectus. In interdum ullamcorper dolor eu mattis.Nulla quis lorem
-                neque,Nulla quis lorem neque, mattis venenatis lectus. In
-                interdum ullamcorper dolor eu mattis.Nulla quis lorem neque,
-                mattis venenatis lectus.
-              </p>
-              <button class="buttonMain capitalize rounded-md">read more</button>
+                </h2>
+                <p class="blogSubtiltle my-5 text-base">
+                  Vivamus a ligula quam. Ut blandit eu leo non suscipit. Duis
+                  feugiat tortor sed.Nulla quis lorem neque, mattis venenatis
+                  lectus. In interdum ullamcorper dolor eu mattis.Nulla quis lorem
+                  neque,Nulla quis lorem neque, mattis venenatis lectus. In
+                  interdum ullamcorper dolor eu mattis.Nulla quis lorem neque,
+                  mattis venenatis lectus.
+                </p>
+                <button class="buttonMain capitalize rounded-md">read more</button>
             </div>
 
             <div class="blogContent mb-10">
-              <img src="../public/images/asset 25.jpeg "class="rounded-md"
-                alt="" />
+              <img src="../public/images/asset 25.jpeg " class="rounded-md" alt="" />
               <div class="fromHow flex my-3">
                 <p class="capitalize">by admin</p>
                 <span class="line mx-2">|</span>
@@ -194,21 +188,20 @@
               <h1 class="blogTitle capitalize text-2xl">
                 Standard post with a single image,There are many variations that
                 focuses on presenting.
-              </h2>
-              <p class="blogSubtiltle my-5 text-base">
-                Vivamus a ligula quam. Ut blandit eu leo non suscipit. Duis
-                feugiat tortor sed.Nulla quis lorem neque, mattis venenatis
-                lectus. In interdum ullamcorper dolor eu mattis.Nulla quis lorem
-                neque,Nulla quis lorem neque, mattis venenatis lectus. In
-                interdum ullamcorper dolor eu mattis.Nulla quis lorem neque,
-                mattis venenatis lectus.
-              </p>
-              <button class="buttonMain capitalize rounded-md">read more</button>
+                </h2>
+                <p class="blogSubtiltle my-5 text-base">
+                  Vivamus a ligula quam. Ut blandit eu leo non suscipit. Duis
+                  feugiat tortor sed.Nulla quis lorem neque, mattis venenatis
+                  lectus. In interdum ullamcorper dolor eu mattis.Nulla quis lorem
+                  neque,Nulla quis lorem neque, mattis venenatis lectus. In
+                  interdum ullamcorper dolor eu mattis.Nulla quis lorem neque,
+                  mattis venenatis lectus.
+                </p>
+                <button class="buttonMain capitalize rounded-md">read more</button>
             </div>
 
             <div class="blogContent mb-10">
-              <img src="../public/images/asset 6.jpeg" class="rounded-md" alt=""
-                />
+              <img src="../public/images/asset 6.jpeg" class="rounded-md" alt="" />
               <div class="fromHow flex my-3">
                 <p class="capitalize">by admin</p>
                 <span class="line mx-2">|</span>
@@ -219,16 +212,16 @@
               <h1 class="blogTitle capitalize text-2xl">
                 Standard post with a single image,There are many variations that
                 focuses on presenting.
-              </h2>
-              <p class="blogSubtiltle my-5 text-base">
-                Vivamus a ligula quam. Ut blandit eu leo non suscipit. Duis
-                feugiat tortor sed.Nulla quis lorem neque, mattis venenatis
-                lectus. In interdum ullamcorper dolor eu mattis.Nulla quis lorem
-                neque,Nulla quis lorem neque, mattis venenatis lectus. In
-                interdum ullamcorper dolor eu mattis.Nulla quis lorem neque,
-                mattis venenatis lectus.
-              </p>
-              <button class="buttonMain capitalize rounded-md">read more</button>
+                </h2>
+                <p class="blogSubtiltle my-5 text-base">
+                  Vivamus a ligula quam. Ut blandit eu leo non suscipit. Duis
+                  feugiat tortor sed.Nulla quis lorem neque, mattis venenatis
+                  lectus. In interdum ullamcorper dolor eu mattis.Nulla quis lorem
+                  neque,Nulla quis lorem neque, mattis venenatis lectus. In
+                  interdum ullamcorper dolor eu mattis.Nulla quis lorem neque,
+                  mattis venenatis lectus.
+                </p>
+                <button class="buttonMain capitalize rounded-md">read more</button>
             </div>
           </div>
           <!-- section left -->
@@ -237,14 +230,9 @@
             <div class="subscribe informationMain">
               <h1 class="uppercase font-bold text-xl">SUBSCRIBE TO <span>BLOG</span></h1>
               <form action="" class="my-3 flex">
-                <input
-                  type="text"
-                  class="p-3 text-base outline-none rounded-tl-md rounded-bl-md
-                  w-full"
-                  placeholder="search here"
-                  />
-                <i
-                  class="fa-solid fa-paper-plane rounded-tr-md
+                <input type="text" class="p-3 text-base outline-none rounded-tl-md rounded-bl-md
+                  w-full" placeholder="search here" />
+                <i class="fa-solid fa-paper-plane rounded-tr-md
                   rounded-br-md h-14 p-5"></i>
 
               </form>
@@ -284,52 +272,32 @@
             <!-- POPULAR POSTS -->
             <div class="popularPosts informationMain mt-10">
               <h1 class="uppercase text-xl"><span>POPULAR </span>POSTS</h1>
-              <div
-                class="popularPost flex items-center justify-start mt-5">
-                <img
-                  src="public/images/productShow/asset-0.jpeg"
-                  class="w-1/4 h-auto rounded-md"
-                  alt=""
-                  />
+              <div class="popularPost flex items-center justify-start mt-5">
+                <img src="public/images/productShow/asset-0.jpeg" class="w-1/4 h-auto rounded-md" alt="" />
                 <div class="text ml-5">
                   <p>By Admin Feb 5, 2020</p>
                   <h4 class="capitalize">There Are Many Variations Presenting.</h4>
                 </div>
               </div>
 
-              <div
-                class="popularPost flex items-center justify-start mt-5">
-                <img
-                  src="public/images/productShow/asset-1.jpeg"
-                  class="w-1/4 h-auto rounded-md"
-                  alt=""
-                  />
+              <div class="popularPost flex items-center justify-start mt-5">
+                <img src="public/images/productShow/asset-1.jpeg" class="w-1/4 h-auto rounded-md" alt="" />
                 <div class="text ml-5">
                   <p>By Admin Feb 5, 2020</p>
                   <h4 class="capitalize">There Are Many Variations Presenting.</h4>
                 </div>
               </div>
 
-              <div
-                class="popularPost flex items-center justify-start mt-5">
-                <img
-                  src="public/images/productShow/asset-2.jpeg"
-                  class="w-1/4 h-auto rounded-md"
-                  alt=""
-                  />
+              <div class="popularPost flex items-center justify-start mt-5">
+                <img src="public/images/productShow/asset-2.jpeg" class="w-1/4 h-auto rounded-md" alt="" />
                 <div class="text ml-5">
                   <p>By Admin Feb 5, 2020</p>
                   <h4 class="capitalize">There Are Many Variations Presenting.</h4>
                 </div>
               </div>
 
-              <div
-                class="popularPost flex items-center justify-start mt-5">
-                <img
-                  src="public/images/productShow/asset-3.jpeg"
-                  class="w-1/4 h-auto rounded-md"
-                  alt=""
-                  />
+              <div class="popularPost flex items-center justify-start mt-5">
+                <img src="public/images/productShow/asset-3.jpeg" class="w-1/4 h-auto rounded-md" alt="" />
                 <div class="text ml-5">
                   <p>By Admin Feb 5, 2020</p>
                   <h4 class="capitalize">There Are Many Variations Presenting.</h4>
@@ -356,27 +324,17 @@
             <!-- recent -->
             <div class="recentComments informationMain mt-10">
               <h1 class="uppercase text-xl"><span>RECENT </span>PRODUCTS</h1>
-              <div
-                class="contentRecentComment flex items-center justify-start
+              <div class="contentRecentComment flex items-center justify-start
                 mt-5">
-                <img
-                  src="../public/images/team/team1.jpg"
-                  class="w-1/4 h-auto rounded-md"
-                  alt=""
-                  />
+                <img src="../public/images/team/team1.jpg" class="w-1/4 h-auto rounded-md" alt="" />
                 <div class="text ml-5">
                   <h4 class="capitalize">White T-Shirt</h4>
                   <p>466.00$</p>
                 </div>
               </div>
-              <div
-                class="contentRecentComment flex items-center justify-start
+              <div class="contentRecentComment flex items-center justify-start
                 mt-5">
-                <img
-                  src="../public/images/team/team2.jpg"
-                  class="w-1/4 h-auto rounded-md"
-                  alt=""
-                  />
+                <img src="../public/images/team/team2.jpg" class="w-1/4 h-auto rounded-md" alt="" />
                 <div class="text ml-5">
                   <h4 class="capitalize">blue T-Shirt</h4>
                   <p>466.00$</p>
@@ -388,8 +346,9 @@
               <h4 class="text-3xl">
                 Men's
                 Fashion
-                <br>50% Off</h4>
-                <p class="text-base">Online &amp; in-store</p>
+                <br>50% Off
+              </h4>
+              <p class="text-base">Online &amp; in-store</p>
             </div>
 
           </div>
@@ -437,8 +396,7 @@
             </ul>
           </div>
           <div class="partTow">
-            <h1
-              class="capitalize text-xl text-white font-extrabold
+            <h1 class="capitalize text-xl text-white font-extrabold
               tracking-wider">
               Women's Day Special Offer All Branded Sandals are Flat 50%
               Discount
@@ -486,8 +444,7 @@
           </div>
         </div>
         <hr />
-        <div
-          class="copy grid grid-cols-1 justify-items-center
+        <div class="copy grid grid-cols-1 justify-items-center
           lg:justify-items-stretch lg:grid-cols-2 my-5">
           <ul class="flex">
             <li>Privacy Policy</li>
@@ -503,4 +460,5 @@
     <!--  ---------------------- end in footer -------------------- -->
     <script src="public/js/main.js"></script>
   </body>
+
 </html>

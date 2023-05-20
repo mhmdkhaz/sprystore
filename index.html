@@ -22,6 +22,14 @@
     <script src="public/splide/js/splide.min.js"></script>
   </head>
   <body>
+    <!-- start in loader -->
+    <div class="loader">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- end in loader -->
     <!-- start in banner content -->
     <section class="bannerSliderMain relative">
       <!-- ----------------- start in header ----------------- -->
@@ -51,8 +59,10 @@
                   class="shooping mx-0 lg:mx-5 text-white cursor-pointer rounded-3xl px-4 py-2.5"
                 >
                   <button class="myCart">
-                    <span>my cart</span>
-                    <i class="fa fa-shopping-cart"></i>
+                    <a href="myCart.html" class="myCart">
+                      <span>my cart</span>
+                      <i class="fa fa-shopping-cart"></i>
+                    </a>
                   </button>
                 </li>
               </ul>
@@ -77,49 +87,13 @@
               <li><a href="about.html">about</a></li>
               <li><a href="shooping.html">shooping</a></li>
               <!-- drop down  -->
-              <di class="max-w-md mx-auto">
-                <div class="relative">
-                  <div class="flex">
-                    <input
-                      value="Blog"
-                      class="outline-none text-gray-800 bg-transparent"
-                      checked
-                    />
-
-                    <label
-                      for="show_more"
-                      class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-gray-600"
-                    >
-                      <svg
-                        class="w-4 h-4 mx-2 fill-current"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <polyline points="18 15 12 9 6 15"></polyline>
-                      </svg>
-                    </label>
-                  </div>
-
-                  <input
-                    type="checkbox"
-                    name="show_more"
-                    id="show_more"
-                    class="hidden peer"
-                    checked
-                  />
-                  <div
-                    class="absolute rounded shadow bg-white overflow-hidden hidden peer-checked:flex flex-col w-full mt-1 border border-gray-200"
-                  >
-                    <a href="blog.html">blog</a>
-                    <a href="blogSingle.html">blog singles</a>
-                  </div>
+              <li class="drop">
+                <button class="openDrop">blog</button>
+                <div class="flex flex-col contetnDrop rounded-md">
+                  <a href="blog.html">blog</a>
+                  <a href="blogSingle.html">blog Single</a>
                 </div>
-              </di>
-
+              </li>
               <li><a href="contact.html">contact</a></li>
             </ul>
             <i class="fa-solid fa-bars-staggered openNav rounded-md"></i>
@@ -1256,6 +1230,29 @@
       </div>
     </footer>
     <!--  ---------------------- end in footer -------------------- -->
+    <div class="btnToTop">
+      <button>
+        <svg
+          version="1.1"
+          id="Capa_1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          width="30px"
+          height="30px"
+          viewBox="0 0 284.929 284.929"
+          style="enable-background: new 0 0 284.929 284.929"
+          xml:space="preserve"
+        >
+          <g>
+            <path
+              d="M282.082,195.285L149.028,62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665,0.953-6.567,2.856L2.856,195.285 C0.95,197.191,0,199.378,0,201.853c0,2.474,0.953,4.664,2.856,6.566l14.272,14.271c1.903,1.903,4.093,2.854,6.567,2.854 c2.474,0,4.664-0.951,6.567-2.854l112.204-112.202l112.208,112.209c1.902,1.903,4.093,2.848,6.563,2.848 c2.478,0,4.668-0.951,6.57-2.848l14.274-14.277c1.902-1.902,2.847-4.093,2.847-6.566 C284.929,199.378,283.984,197.188,282.082,195.285z"
+            />
+          </g>
+        </svg>
+      </button>
+    </div>
     <script src="public/js/main.js"></script>
   </body>
 </html>

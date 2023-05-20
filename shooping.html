@@ -22,6 +22,14 @@
     <script src="public/splide/js/splide.min.js"></script>
   </head>
   <body>
+    <!-- start in loader -->
+    <div class="loader">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- end in loader -->
     <!-- start in banner content -->
     <section class="bannerSliderMain relative">
       <!-- ----------------- start in header ----------------- -->
@@ -75,7 +83,14 @@
               <li class="active"><a href="index.html">home</a></li>
               <li><a href="about.html">about</a></li>
               <li><a href="shooping.html">shooping</a></li>
-              <li><a href="blog.htm">blog</a></li>
+              <!-- drop down  -->
+              <li class="drop">
+                <button class="openDrop">blog</button>
+                <div class="flex flex-col contetnDrop rounded-md">
+                  <a href="blog.html">blog</a>
+                  <a href="blogSingle.html">blog Single</a>
+                </div>
+              </li>
               <li><a href="contact.html">contact</a></li>
             </ul>
             <i class="fa-solid fa-bars-staggered openNav rounded-md"></i>
@@ -362,20 +377,10 @@
             class="ecommerceRight col-start-1 col-end-13 lg:col-start-5 lg:col-end-13"
           >
             <!-- top bar -->
-            <div class="topBar flex justify-between items-center">
+            <div class="topBar flex flex-wrap justify-between items-center">
               <h1 class="capitalize font-semibold Showing">
                 Showing All 9 Results
               </h1>
-              <select class="px-5 py-3 cursor-pointer outline-none rounded-md">
-                <option value="menu_order" selected="selected">
-                  Default Sorting
-                </option>
-                <option value="popularity">Sort by Popularity</option>
-                <option value="rating">Sort by Average rating</option>
-                <option value="date">Sort by latest</option>
-                <option value="price">Sort by Price: low to high</option>
-                <option value="price-desc">Sort by Price: high to low</option>
-              </select>
             </div>
             <!-- end top bar -->
             <!-- start shooping product -->
@@ -507,6 +512,9 @@
       </div>
     </footer>
     <!--  ---------------------- end in footer -------------------- -->
+    <!-- back to top -->
+    <a id="back-top" href="#top"><i class="fa fa-chevron-up"></i></a>
+    <!-- back to top -->
     <script src="public/js/main.js"></script>
   </body>
 </html>

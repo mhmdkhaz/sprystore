@@ -22,6 +22,14 @@
     <script src="public/splide/js/splide.min.js"></script>
   </head>
   <body>
+    <!-- start in loader -->
+    <div class="loader">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- end in loader -->
     <!-- start in banner content -->
     <section class="bannerSliderMain relative">
       <!-- ----------------- start in header ----------------- -->
@@ -51,15 +59,17 @@
                   class="shooping mx-0 lg:mx-5 text-white cursor-pointer rounded-3xl px-4 py-2.5"
                 >
                   <button class="myCart">
-                    <span>my cart</span>
-                    <i class="fa fa-shopping-cart"></i>
+                    <a href="myCart.html" class="myCart">
+                      <span>my cart</span>
+                      <i class="fa fa-shopping-cart"></i>
+                    </a>
                   </button>
                 </li>
               </ul>
             </div>
           </div>
           <nav class="flex flex-row justify-between items-center relative">
-            <h1 class="font-black text-3xl uppercase text-white">
+            <h1 class="font-black uppercase text-white">
               spry<span>s</span>tore
             </h1>
             <div
@@ -76,7 +86,14 @@
               <li class="active"><a href="index.html">home</a></li>
               <li><a href="about.html">about</a></li>
               <li><a href="shooping.html">shooping</a></li>
-              <li><a href="blog.html">blog</a></li>
+              <!-- drop down  -->
+              <li class="drop">
+                <button class="openDrop">blog</button>
+                <div class="flex flex-col contetnDrop rounded-md">
+                  <a href="blog.html">blog</a>
+                  <a href="blogSingle.html">blog Single</a>
+                </div>
+              </li>
               <li><a href="contact.html">contact</a></li>
             </ul>
             <i class="fa-solid fa-bars-staggered openNav rounded-md"></i>
@@ -160,7 +177,7 @@
     <!-- start preview product -->
     <section class="storePreview my-3">
       <div class="container mx-auto p-8 lg:px-48">
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid lg:grid-cols-3 grid-cols-1 gap-4">
           <div class="previewLeft">
             <img src="public/images/clothes/asset_10.jpeg" alt="" />
           </div>
@@ -169,7 +186,7 @@
               Striped Men Round Neck Yellow T-Shirt
             </h1>
             <!-- free and rating -->
-            <div class="caption flex items-center">
+            <div class="caption flex flex-wrap items-center">
               <ul class="rating-single flex my-4">
                 <li>
                   <a href="#">
@@ -248,7 +265,7 @@
               </p>
             </div>
             <!-- description -->
-            <div class="description flex justify-between mb-4">
+            <div class="description flex flex-wrap justify-between mb-4">
               <div class="highlights">
                 <h5 class="font-bold capitalize text-xl">Highlights:</h5>
                 <ul class="mt-2 list-decimal list-inside">
@@ -280,7 +297,7 @@
                 </button>
               </div>
               <input
-                class="input-group-field rounded-md"
+                class="input-group-field rounded-md w-6/12"
                 type="number"
                 name="quantity"
                 value="0"

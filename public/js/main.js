@@ -1,11 +1,42 @@
 // start in navbar
-// window.localStorage.clear();
-
 let openNavbar = document.querySelector(".openNav");
 let navbarList = document.querySelector("nav ul");
+let openDropdown = document.querySelector(".openDrop");
+let contetnDrop = document.querySelector(".contetnDrop");
+
 openNavbar.addEventListener("click", () => {
-  navbarList.style.opacity = "1";
+  navbarList.classList.toggle("activeNav");
 });
+openDropdown.addEventListener("click", () => {
+  contetnDrop.classList.toggle("hideDrop");
+});
+
+// start in loader
+window.onload = function () {
+  let loader = document.querySelector(".loader");
+  loader.classList.add("hideLoader");
+};
+
+// start in back to top
+window.onscroll = function () {
+  const btnToTop = document.querySelector(".btnToTop svg");
+  if (
+    btnToTop ||
+    document.body.scrollTop > 80 ||
+    document.documentElement.scrollTop > 80
+  ) {
+    btnToTop.style.opacity = "1";
+  } else {
+    btnToTop.style.opacity = "0";
+  }
+  btnToTop.addEventListener("click", () => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+};
+
 // start in log in
 let openLogAndSearch = document.querySelectorAll(".userLogSearch");
 let closeLogAndSearch = document.querySelectorAll(".closeLogSearch");
@@ -104,7 +135,7 @@ function addDataFromFetchInShooping(dataFromFetch) {
                       <img
                         src="${dataFromFetch.imgOne}"
                         alt=""
-                        class="rounded-md w-full h-full"
+                        class="cartImgages rounded-md w-full h-full"
                       />
                       <img
                         src="${dataFromFetch.imgTwo}"
@@ -136,7 +167,7 @@ function addDataFromFetchInShooping(dataFromFetch) {
                     >
                     <div class="priceCount flex flex-row justify-center mt-2">
                       <p class="price  capitalize font-bold">price:<span>${dataFromFetch.price}</span> </p>
-                      <p class="count  capitalize font-bold px-3">price:<span>${dataFromFetch.count}</span> </p>
+                      <p class="count  capitalize font-bold px-3">count:<span>${dataFromFetch.count}</span> </p>
                     </div>
                   </div>
                 </div>
@@ -165,19 +196,6 @@ let infoToArray = [];
 if (window.localStorage.getItem("item")) {
   infoToArray = JSON.parse(window.localStorage.getItem("item"));
 }
-// not repeat element for infotoarray
-// let uniqueArray = Array.from(
-//   new Set(infoToArray.map((obj) => JSON.stringify(obj)))
-// ).map((str) => JSON.parse(str));
-
-// let myArray = Array.from(new Set(infoToArray.map((obj) => obj.id))).map((id) =>
-//   infoToArray.find((obj) => obj.id == id)
-// );
-// uniqueArray = myArray.filter((obj, index, arr) => {
-//   return !arr.some((otherObj, otherIndex) => {
-//     return otherIndex > index && otherObj.id == obj.id;
-//   });
-// });
 
 let uniqueArray = [];
 let removeDuplicate = [];
@@ -190,6 +208,8 @@ function makeUniquArray() {
   });
   return uniqueArray;
 }
+// add inside unique array elemetn not repeat
+uniqueArray = makeUniquArray();
 
 function getInforFromShooping() {
   let addToCarts = document.querySelectorAll(".addCart");
@@ -198,6 +218,8 @@ function getInforFromShooping() {
       styleCartShooping();
       let parrenCartShooping = addToCart.parentNode.parentElement;
       let parrenCartShoopingId = addToCart.parentNode.parentElement.dataset.id;
+
+      let imagesCart = parrenCartShooping.querySelector(".cartImgages").src;
 
       let titleInfoCart =
         parrenCartShooping.querySelector(".productContent a").textContent;
@@ -208,14 +230,14 @@ function getInforFromShooping() {
       pushInfromationToArray(
         parrenCartShoopingId,
         priceInfoCart,
-        titleInfoCart
+        titleInfoCart,
+        imagesCart
       );
 
       makeUniquArray();
-      console.log(uniqueArray);
 
       setInformationToCart(uniqueArray);
-      setInfoLocal(infoToArray);
+      setInfoLocal(uniqueArray);
     });
   });
 }
@@ -236,13 +258,13 @@ function getPathFromShooping() {
   });
 }
 
-function setPathtoPreview() {
-  let getPathFromLocal = window.localStorage.getItem("path");
-  document
-    .querySelector(".storePreview .previewLeft img")
-    .setAttribute("src", getPathFromLocal);
-}
-setPathtoPreview();
+// function setPathtoPreview() {
+//   let getPathFromLocal = window.localStorage.getItem("path");
+//   document
+//     .querySelector(".storePreview .previewLeft img")
+//     .setAttribute("src", getPathFromLocal);
+// }
+// setPathtoPreview();
 
 function previewInfoSetLocal(parentMainShop) {
   let parentMainShopId = parentMainShop.dataset.id;
@@ -258,27 +280,36 @@ function previewInfoGetLocal() {
   let getCount = localStorage.getItem("countPreivew");
   let getCountToParse = JSON.parse(getCount); // to parse for get local
 
-  uniqueArray = makeUniquArray();
-  uniqueArray.forEach((objectCount) => {
-    countPlace.value = objectCount.count;
-    if (objectCount.id == getCountToParse.id) {
-      countPlace.onkeyup = function () {
-        objectCount.count = countPlace.value;
-        setInfoLocal(uniqueArray);
-      };
-    }
-  });
+  if (countPlace) {
+    uniqueArray.forEach((objectCount) => {
+      if (objectCount.id == getCountToParse.id) {
+        countPlace.value = objectCount.count;
+        countPlace.onkeyup = function () {
+          objectCount.count = countPlace.value;
+          setInfoLocal(uniqueArray);
+        };
+      }
+    });
+  }
 }
 previewInfoGetLocal();
 
-function pushInfromationToArray(idShooping, priceInfoCart, titleInfoCart) {
+function pushInfromationToArray(
+  idShooping,
+  priceInfoCart,
+  titleInfoCart,
+  imagesCart
+) {
   const objInfo = {
     id: idShooping,
     price: priceInfoCart,
+    mainPrice: priceInfoCart,
     title: titleInfoCart,
+    images: imagesCart,
     count: 1,
   };
   infoToArray.push(objInfo);
+  console.log(uniqueArray);
 }
 
 function setInformationToCart(getInforArray) {
@@ -287,7 +318,7 @@ function setInformationToCart(getInforArray) {
     contentListCart.innerHTML = "";
     getInforArray.forEach((item) => {
       contentListCart.innerHTML += `
-                    <li class="flex flex-col justify-center my-1" data-id=${item.id} data-price=${item.price}>
+                    <li class="mainProduct flex justify-center my-1" data-id=${item.id}
                       <h2 class="titleCartShooping break-all text-center mb-2">${item.title}</h2>
                       <div class="flex flex-row justify-between w-full items-center py-0.5 px-1">
                         <input
@@ -295,7 +326,7 @@ function setInformationToCart(getInforArray) {
                           class="countClothes w-8 h-5 outline-none rounded-md text-xs text-center"
                           value=${item.count}
                         />
-                        <p class="priceCartShooping">${item.price}</p>
+                        <p class="priceCartShooping price">${item.price}</p>
                                 <span class=" flex justify-center">
                           <i
                             class="reomveElement fa-solid fa-xmark mx-2 rounded-md px-1 py-0 w-5 h-5 text-sm cursor-pointer opacity-70"
@@ -307,26 +338,30 @@ function setInformationToCart(getInforArray) {
     });
   }
   removeElementFromCart();
-  changeCountPriceElement();
+  changeInfoInShooping();
 }
 
-function changeCountPriceElement() {
-  let countCloth = document.querySelectorAll(".countClothes");
-  countCloth.forEach((count) => {
-    count.onkeyup = function () {
+function changeInfoInShooping() {
+  changeCountPriceMain();
+}
+
+function changeCountPriceMain() {
+  let changeCount = document.querySelectorAll(".countClothes");
+  changeCount.forEach((change) => {
+    change.onchange = function () {
       // change count in input
-      let getId = count.parentElement.parentElement.dataset.id;
-      let countValue = count.value;
-      uniqueArray.forEach((objectCount) => {
+      let getId = change.closest("[data-id]").dataset.id;
+
+      uniqueArray.forEach((objectChange) => {
         //total price of the item
-        let getPrice = count.parentElement.parentElement.dataset.price;
-        let placePrice = count.parentElement.children[1];
-        let subTotalPrice = getPrice.match(/\d+/)[0] * count.value;
+        let placePrice = change.closest(".mainProduct").querySelector(".price");
+        let subTotalPrice =
+          objectChange.mainPrice.match(/\d+/)[0] * change.value;
         placePrice.innerHTML = `${subTotalPrice}$`;
 
-        if (objectCount.id == getId) {
-          objectCount.count = countValue;
-          objectCount.price = subTotalPrice;
+        if (objectChange.id == getId) {
+          objectChange.count = change.value;
+          objectChange.price = subTotalPrice;
           setInfoLocal(uniqueArray);
         }
       });
@@ -338,19 +373,17 @@ function removeElementFromCart() {
   let removeElement = document.querySelectorAll(".reomveElement");
   removeElement.forEach((clickRemove) => {
     clickRemove.addEventListener("click", () => {
-      let pareentListClothe =
-        clickRemove.parentNode.parentElement.parentElement;
-
+      let pareentListClothe = clickRemove.closest("[data-id]");
       let getDataId = pareentListClothe.dataset.id;
-      reomveElementFromLocal(getDataId);
       pareentListClothe.remove();
+      reomveElementFromLocal(getDataId);
     });
   });
 }
 
 function reomveElementFromLocal(itemId) {
-  infoToArray = infoToArray.filter((item) => item.id != itemId);
-  setInfoLocal(infoToArray);
+  uniqueArray = uniqueArray.filter((item) => item.id != itemId);
+  setInfoLocal(uniqueArray);
 }
 
 function setInfoLocal(informationLocal) {
@@ -366,3 +399,66 @@ function getInfoLocal() {
 }
 
 // ------------- preview page --------------
+
+// ------------- start in my cart page --------------
+let itemsCart = document.querySelector(".itemsProduct");
+function showItemsCart() {
+  if (itemsCart) {
+    uniqueArray.forEach((showCart) => {
+      itemsCart.innerHTML += `
+            <article class="mainProduct product rounded-md mt-5 py-4" data-id="${showCart.id}">
+            <figure>
+              <a class="imgProduct mt-3 lg:mt-0">
+                <img
+                  src="${showCart.images}"
+                  alt=""
+                  class="h-full"
+                />
+
+                <h3 class="reomveElement text-center py-3">Remove product</h3>
+              </a>
+            </figure>
+
+            <div class="infoContet relative ">
+              <div class="content text-left my-5">
+                <h1>${showCart.title}</h1>
+
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Soluta, numquam quis perspiciatis ea ad omnis provident laborum
+                dolore in atque.
+              </div>
+
+              <div
+                class="contentMoney quantity w-full "
+              >
+                <input type="text" class="countClothes rounded-md text-center" value="${showCart.count}"  />
+                <div class="flex">
+                  <h2 class="price">${showCart.price}</h2>
+                  <h2 class="full-price">${showCart.mainPrice}</h2>
+                </div>
+              </div>
+            </div>
+          </article>
+    `;
+    });
+  }
+  changeInfoInMyCart();
+  removeFromCart();
+}
+showItemsCart();
+
+function changeInfoInMyCart() {
+  changeCountPriceMain();
+}
+
+function removeFromCart() {
+  console.log("d");
+  removeElementFromCart();
+}
+
+// let x = 0;
+// uniqueArray.forEach((total) => {
+//   x += total.price;
+//   console.log(x);
+// });
+// ------------- end in my cart page --------------

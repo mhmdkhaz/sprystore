@@ -3,7 +3,7 @@
         "id": 1,
         "imgOne": "public/images/clothes/asset_7.jpeg",
         "imgTwo": "public/images/clothes/asset_8.jpeg",
-        "title": "kkkkkkkkk",
+        "title": "women",
         "price": "150$",
         "count": "5"
     },
@@ -11,7 +11,7 @@
         "id": 2,
         "imgOne": "public/images/clothes/asset_9.jpeg",
         "imgTwo": "public/images/clothes/asset_10.jpeg",
-        "title": "kkkkkkkkk",
+        "title": "men",
         "price": "250$",
         "count": "2"
     },
@@ -19,7 +19,7 @@
         "id": 3,
         "imgOne": "public/images/clothes/asset_11.jpeg",
         "imgTwo": "public/images/clothes/asset_12.jpeg",
-        "title": "kkkkkkkkk",
+        "title": "black",
         "price": "50$",
         "count": "12"
     },
@@ -27,7 +27,7 @@
         "id": 4,
         "imgOne": "public/images/clothes/asset_13.jpeg",
         "imgTwo": "public/images/clothes/asset_14.jpeg",
-        "title": "kkkkkkkkk",
+        "title": "red",
         "price": "70$",
         "count": "10"
     },
@@ -35,7 +35,7 @@
         "id": 5,
         "imgOne": "public/images/clothes/asset_15.jpeg",
         "imgTwo": "public/images/clothes/asset_16.jpeg",
-        "title": "kkkkkkkkk",
+        "title": "yellow",
         "price": "90$",
         "count": "7"
     },
@@ -43,7 +43,7 @@
         "id": 6,
         "imgOne": "public/images/clothes/asset_17.jpeg",
         "imgTwo": "public/images/clothes/asset_18.jpeg",
-        "title": "kkkkkkkkk",
+        "title": "orange",
         "price": "20$",
         "count": "20"
     },
@@ -51,7 +51,7 @@
         "id": 7,
         "imgOne": "public/images/clothes/asset_19.jpeg",
         "imgTwo": "public/images/clothes/asset_20.jpeg",
-        "title": "kkkkkkkkk",
+        "title": "creative",
         "price": "68$",
         "count": "8"
     },
@@ -59,7 +59,7 @@
         "id": 8,
         "imgOne": "public/images/clothes/asset_21.jpeg",
         "imgTwo": "public/images/clothes/asset_22.jpeg",
-        "title": "kkkkkkkkk",
+        "title": "blue",
         "price": "90$",
         "count": "3"
     }

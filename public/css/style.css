@@ -264,107 +264,8 @@
   padding: 10px 40px;
 }
 /* ---------------------- end in emai ----------------------------- */
-/* - ---------------- start in footer -------------------------- */
-footer {
-  background-color: var(--colorBlack);
-}
-footer .partOne h1 span {
-  color: var(--colorOrange);
-}
-footer .partOne p {
-  color: var(--colorGrayLight);
-  opacity: 0.7;
-}
-
-footer .icon li {
-  color: var(--colorGrayLight);
-  margin-right: 25px;
-  width: 36px;
-  height: 36px;
-  background-color: #3a3535;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  -o-transition: all 0.3s;
-}
-footer .icon li:hover {
-  background-color: var(--colorOrange);
-  cursor: pointer;
-}
-
-footer .partTow .useful h1 {
-  color: var(--colorWhite);
-}
-footer .partTow .useful ul li {
-  color: var(--colorGrayLight);
-  opacity: 0.7;
-  margin: 10px 0;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  cursor: pointer;
-}
-footer .partTow .useful ul li:hover {
-  color: var(--colorOrange);
-}
-footer .partTow .our h1 {
-  color: var(--colorWhite);
-}
-footer .partTow .our p {
-  color: var(--colorGrayLight);
-  opacity: 0.7;
-}
-
-footer .partTow .buy li {
-  margin-right: 25px;
-  color: var(--colorGray);
-  font-size: 26px;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  -o-transition: all 0.3s;
-}
-footer .partTow .buy li:hover {
-  color: var(--colorWhite);
-}
-
-footer .copy ul li {
-  margin-right: 25px;
-  color: var(--colorGrayLight);
-  opacity: 0.7;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  cursor: pointer;
-}
-footer .copy ul li:hover {
-  color: var(--colorOrange);
-}
-footer .copy p {
-  margin-right: 25px;
-  color: var(--colorGrayLight);
-}
-/*  --------------------end in footer --------------------*/
 
 /*  --------------------------------------- start in page about ---------------------------------------------------------- */
-
-/* -------- start hear main -------------- */
-
-/* -------- end hear main -------------- */
 
 /* ------------ start in store --------------  */
 
@@ -503,14 +404,6 @@ img::after {
 /* -------------------------------------- start in page shooping and blog  ---------------------------------------------  */
 .ecomerceGrids .topBar h1 {
   color: var(--colorGray);
-}
-.ecomerceGrids .topBar select {
-  border: 2px solid var(--colorGray);
-}
-.ecomerceGrids .topBar select option {
-  color: var(--colorGray);
-  text-transform: capitalize;
-  cursor: pointer;
 }
 .shoopingProductCard figure {
   height: 300px;
@@ -1279,3 +1172,171 @@ img::after {
   margin: 10px 0;
 }
 /* -------------------- -----------------------  */
+
+/*  */
+
+.product {
+  border: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  -webkit-transition: margin 0.2s linear, opacity 0.2s linear;
+  -moz-transition: margin 0.2s linear, opacity 0.2s linear;
+  -ms-transition: margin 0.2s linear, opacity 0.2s linear;
+  -o-transition: margin 0.2s linear, opacity 0.2s linear;
+  transition: margin 0.2s linear, opacity 0.2s linear;
+}
+
+.product figure,
+.product .content {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-style: none none solid none;
+}
+
+.product figure {
+  background: #000;
+  margin: 0 1% 0 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  height: 195px;
+}
+
+.product figure:hover img {
+  opacity: 0.7;
+}
+
+.product figure .reomveElement {
+  background: var(--colorOrange);
+  color: #fff;
+  position: absolute;
+  bottom: -100%;
+  right: 0;
+  left: 0;
+  transform: translate(0, 50%);
+  -webkit-transform: translate(0, 50%);
+  -moz-transform: translate(0, 50%);
+  -ms-transform: translate(0, 50%);
+  -o-transform: translate(0, 50%);
+  -webkit-transition: bottom 0.2s linear;
+  -moz-transition: bottom 0.2s linear;
+  -ms-transition: bottom 0.2s linear;
+  -o-transition: bottom 0.2s linear;
+  transition: bottom 0.2s linear;
+}
+
+.product figure:hover .reomveElement {
+  bottom: 50%;
+}
+
+.imgProduct {
+  cursor: pointer;
+}
+
+.product h1 {
+  color: var(--colorOrange);
+  font-size: 25px;
+  font-weight: 300;
+  margin: 17px 0 20px 0;
+}
+
+.product .contentMoney {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product .quantity .price {
+  background: #fcfcfc;
+  color: #000;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 49px;
+  margin: 0;
+  padding: 0 30px;
+}
+
+.product .quantity .full-price {
+  background: var(--colorGray);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 49px;
+  margin: 0;
+  padding: 0 30px;
+
+  -webkit-transition: margin 0.15s linear;
+  -moz-transition: margin 0.15s linear;
+  -ms-transition: margin 0.15s linear;
+  -o-transition: margin 0.15s linear;
+  transition: margin 0.15s linear;
+}
+
+.product .coutnMyCart {
+  border: 1px solid var(--colorGray);
+  outline: none;
+}
+
+.qt-plus,
+.qt-minus {
+  background: #fcfcfc;
+  font-size: 30px;
+  font-weight: 300;
+  padding: 0 20px;
+  -webkit-transition: background 0.2s linear;
+  -moz-transition: background 0.2s linear;
+  -ms-transition: background 0.2s linear;
+  -o-transition: background 0.2s linear;
+  transition: background 0.2s linear;
+}
+
+.qt-plus:hover,
+.qt-minus:hover {
+  background: var(--colorGray);
+  color: #fff;
+  cursor: pointer;
+}
+
+#site-footer h1 {
+  background: #fcfcfc;
+  border: 1px solid #ccc;
+  border-style: none none solid none;
+  font-size: 24px;
+  font-weight: 300;
+  margin: 0 0 7px 0;
+  padding: 14px 40px;
+  text-align: center;
+}
+
+#site-footer h2 {
+  font-size: 24px;
+  font-weight: 300;
+  margin: 10px 0 0 0;
+}
+
+#site-footer h3 {
+  font-size: 19px;
+  font-weight: 300;
+  margin: 15px 0;
+}
+
+.send {
+  background: var(--colorGray);
+  border: 1px solid #999;
+  color: #fff;
+
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.send:hover {
+  color: #fff;
+  background: var(--colorGray);
+}
+
+/*  */

@@ -258,13 +258,13 @@ function getPathFromShooping() {
   });
 }
 
-// function setPathtoPreview() {
-//   let getPathFromLocal = window.localStorage.getItem("path");
-//   document
-//     .querySelector(".storePreview .previewLeft img")
-//     .setAttribute("src", getPathFromLocal);
-// }
-// setPathtoPreview();
+function setPathtoPreview() {
+  let getPathFromLocal = window.localStorage.getItem("path");
+  document
+    .querySelector(".storePreview .previewLeft img")
+    .setAttribute("src", getPathFromLocal);
+}
+setPathtoPreview();
 
 function previewInfoSetLocal(parentMainShop) {
   let parentMainShopId = parentMainShop.dataset.id;
@@ -348,7 +348,7 @@ function changeInfoInShooping() {
 function changeCountPriceMain() {
   let changeCount = document.querySelectorAll(".countClothes");
   changeCount.forEach((change) => {
-    change.onchange = function () {
+    change.onkeyup = function () {
       // change count in input
       let getId = change.closest("[data-id]").dataset.id;
 

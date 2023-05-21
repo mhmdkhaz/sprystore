@@ -161,7 +161,7 @@ input {
 }
 /* start in navbar */
 .bannerSliderMain header nav h1 {
-  font-size: 5vw;
+  font-size: 3vw;
 }
 .bannerSliderMain header nav h1 span {
   color: var(--colorOrange);
@@ -177,7 +177,7 @@ input {
   text-transform: capitalize;
   margin-left: 30px;
   cursor: pointer;
-
+  position: relative;
   font-weight: 600;
   color: var(--colorWhite);
 }
@@ -205,18 +205,23 @@ input {
 .bannerSliderMain header nav ul .drop .contetnDrop {
   background-color: var(--colorGrayLight);
   color: var(--colorBlack);
-  position: relative;
+  position: absolute;
   padding: 10px;
   margin-top: 10px;
-}
-.hideDrop {
-  opacity: 0;
+  top: 25px;
+  left: -100%;
+  width: max-content;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
 }
 .bannerSliderMain header nav ul .drop .contetnDrop::before {
   content: "";
   width: 10px;
   height: 10px;
-  background: #fff;
+  background-color: var(--colorGrayLight);
   border: 1px #d5d5d5ee solid;
   display: block;
   border-right: none;
@@ -224,8 +229,11 @@ input {
   transform: translateX(-50%) rotateZ(45deg);
   position: absolute;
   top: -5px;
-  left: 49%;
-  z-index: 1001;
+  left: 50%;
+  z-index: 100;
+}
+.hideDrop {
+  opacity: 0;
 }
 .bannerSliderMain header nav .openNav {
   background-color: var(--colorWhite);
@@ -243,12 +251,11 @@ input {
     left: 50%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     background-color: var(--colorBlack);
     width: 80%;
     z-index: 10;
     overflow: hidden;
-
     transform: translate(-50%, 0);
     -webkit-transform: translate(-50%, 0);
     -moz-transform: translate(-50%, 0);
@@ -260,6 +267,11 @@ input {
   }
   .activeNav {
     opacity: 0;
+  }
+  .bannerSliderMain header nav ul .drop .contetnDrop {
+    position: relative;
+    left: 0;
+    top: 0;
   }
 }
 /* start left navbar */
@@ -602,6 +614,7 @@ footer .copy p {
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
   z-index: 999;
+  border: 1px solid var(--colorGray);
 }
 
 .btnToTop svg:hover {

@@ -1,12 +1,12 @@
 // start in navbar
 let openNavbar = document.querySelector(".openNav");
 let navbarList = document.querySelector("nav ul");
-let openDropdown = document.querySelector(".openDrop");
-let contetnDrop = document.querySelector(".contetnDrop");
-
 openNavbar.addEventListener("click", () => {
   navbarList.classList.toggle("activeNav");
 });
+// start in drop
+let openDropdown = document.querySelector(".openDrop");
+let contetnDrop = document.querySelector(".contetnDrop");
 openDropdown.addEventListener("click", () => {
   contetnDrop.classList.toggle("hideDrop");
 });
@@ -29,6 +29,10 @@ function toTop() {
 
 window.onscroll = () => {
   toTop();
+  btnToTop.onclick = function () {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
 };
 
 // start in log in
@@ -254,9 +258,10 @@ function getPathFromShooping() {
 
 function setPathtoPreview() {
   let getPathFromLocal = window.localStorage.getItem("path");
-  document
-    .querySelector(".storePreview .previewLeft img")
-    .setAttribute("src", getPathFromLocal);
+  let setImgToPreviw = document.querySelector(".storePreview .previewLeft img");
+  if (setImgToPreviw) {
+    setImgToPreviw.setAttribute("src", getPathFromLocal);
+  }
 }
 setPathtoPreview();
 
@@ -271,10 +276,10 @@ function previewInfoSetLocal(parentMainShop) {
 
 function previewInfoGetLocal() {
   let countPlace = document.querySelector(".storePreview .input-group-field");
-  let getCount = localStorage.getItem("countPreivew");
-  let getCountToParse = JSON.parse(getCount); // to parse for get local
 
   if (countPlace) {
+    let getCount = localStorage.getItem("countPreivew");
+    let getCountToParse = JSON.parse(getCount); // to parse for get local
     uniqueArray.forEach((objectCount) => {
       if (objectCount.id == getCountToParse.id) {
         countPlace.value = objectCount.count;
@@ -303,7 +308,6 @@ function pushInfromationToArray(
     count: 1,
   };
   infoToArray.push(objInfo);
-  console.log(uniqueArray);
 }
 
 function setInformationToCart(getInforArray) {
@@ -312,8 +316,8 @@ function setInformationToCart(getInforArray) {
     contentListCart.innerHTML = "";
     getInforArray.forEach((item) => {
       contentListCart.innerHTML += `
-                    <li class="mainProduct flex justify-center my-1" data-id=${item.id}
-                      <h2 class="titleCartShooping break-all text-center mb-2">${item.title}</h2>
+                    <li class="mainProduct flex flex-col items-center my-1" data-id=${item.id}
+                      <h2 class="titleCartShooping break-all text-center mb-6">${item.title}</h2>
                       <div class="flex flex-row justify-between w-full items-center py-0.5 px-1">
                         <input
                           type="number"
@@ -347,13 +351,15 @@ function changeCountPriceMain() {
       let getId = change.closest("[data-id]").dataset.id;
 
       uniqueArray.forEach((objectChange) => {
-        //total price of the item
-        let placePrice = change.closest(".mainProduct").querySelector(".price");
-        let subTotalPrice =
-          objectChange.mainPrice.match(/\d+/)[0] * change.value;
-        placePrice.innerHTML = `${subTotalPrice}$`;
-
         if (objectChange.id == getId) {
+          //total price of the item
+          let placePrice = change
+            .closest(".mainProduct")
+            .querySelector(".price");
+          let subTotalPrice =
+            objectChange.mainPrice.match(/\d+/)[0] * change.value;
+          placePrice.innerHTML = `${subTotalPrice}$`;
+          //
           objectChange.count = change.value;
           objectChange.price = subTotalPrice;
           setInfoLocal(uniqueArray);
@@ -438,6 +444,7 @@ function showItemsCart() {
   }
   changeInfoInMyCart();
   removeFromCart();
+  funTotalPrice();
 }
 showItemsCart();
 
@@ -446,13 +453,17 @@ function changeInfoInMyCart() {
 }
 
 function removeFromCart() {
-  console.log("d");
   removeElementFromCart();
 }
 
-// let x = 0;
-// uniqueArray.forEach((total) => {
-//   x += total.price;
-//   console.log(x);
-// });
+function funTotalPrice() {
+  let placeTotalPrice = document.querySelector(".total span");
+  let totalPrice = 0;
+  if (placeTotalPrice) {
+    uniqueArray.forEach((total) => {
+      totalPrice += total.price;
+      placeTotalPrice.innerHTML = totalPrice;
+    });
+  }
+}
 // ------------- end in my cart page --------------

@@ -73,14 +73,11 @@
               spry<span>s</span>tore
             </h1>
             <div
-              class="search ml-0 lg:ml-24 font-extrabold text-xl uppercase text-white"
+              class="search userLogSearch ml-0 lg:ml-24 flex items-center font-extrabold text-xl uppercase text-white"
+              data-show=".OverlaySearch"
             >
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <span
-                class="userLogSearch hidden lg:block"
-                data-show=".OverlaySearch"
-                >search here</span
-              >
+              <i class="fa-solid fa-magnifying-glass mr-2"></i>
+              <span class="hidden lg:block">search here</span>
             </div>
             <ul class="rounded-md">
               <li class="active"><a href="index.html">home</a></li>
@@ -89,7 +86,7 @@
               <!-- drop down  -->
               <li class="drop">
                 <button class="openDrop">blog</button>
-                <div class="flex flex-col contetnDrop rounded-md">
+                <div class="flex flex-col contetnDrop hideDrop rounded-md">
                   <a href="blog.html">blog</a>
                   <a href="blogSingle.html">blog Single</a>
                 </div>
@@ -178,7 +175,9 @@
               >
                 <div class="contentIcon z-10 relative top-2/4 w-full">
                   <div class="textContent absolute left-14 w-7/12 text-white">
-                    <h1 class="text-6xl uppercase font-bold leading-tight">
+                    <h1
+                      class="lg:text-6xl text-3xl uppercase font-bold leading-tight"
+                    >
                       WOMEN'S FASHION 50% OFF
                     </h1>
                     <button
@@ -1230,6 +1229,7 @@
       </div>
     </footer>
     <!--  ---------------------- end in footer -------------------- -->
+    <!-- button top -->
     <div class="btnToTop">
       <button>
         <svg
@@ -1253,6 +1253,7 @@
         </svg>
       </button>
     </div>
+    <!-- button top -->
     <script src="public/js/main.js"></script>
   </body>
 </html>

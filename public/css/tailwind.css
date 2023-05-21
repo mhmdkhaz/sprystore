@@ -615,6 +615,10 @@ video {
   z-index: 10;
 }
 
+.z-0 {
+  z-index: 0;
+}
+
 .order-last {
   order: 9999;
 }
@@ -2658,7 +2662,6 @@ img::after {
 }
 
 .product figure {
-  background: #000;
   margin: 0 1% 0 0;
   overflow: hidden;
   padding: 0;
@@ -2972,6 +2975,11 @@ img::after {
 
   .lg\:pl-24 {
     padding-left: 6rem;
+  }
+
+  .lg\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 }
 

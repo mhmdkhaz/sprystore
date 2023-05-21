@@ -30,10 +30,11 @@
       </div>
     </div>
     <!-- end in loader -->
-    <!-- ----------------- start in header ----------------- -->
-    <section class="bg-black bannerSliderMain relative">
-      <header class="w-full">
-        <!-- start in navbar  -->
+    <!-- start in banner content -->
+    <section class="bannerSliderMain relative">
+      <!-- ----------------- start in header ----------------- -->
+      <header class="absolute left-0 top-0 w-full z-10">
+        <!-- start in navbar -->
         <div class="w-full px-4 lg:px-8">
           <div
             class="containerFluid flex flex-row justify-between items-center my-3"
@@ -57,8 +58,10 @@
                   class="shooping mx-0 lg:mx-5 text-white cursor-pointer rounded-3xl px-4 py-2.5"
                 >
                   <button class="myCart">
-                    <span>my cart</span>
-                    <i class="fa fa-shopping-cart"></i>
+                    <a href="myCart.html" class="myCart">
+                      <span>my cart</span>
+                      <i class="fa fa-shopping-cart"></i>
+                    </a>
                   </button>
                 </li>
               </ul>
@@ -69,14 +72,11 @@
               spry<span>s</span>tore
             </h1>
             <div
-              class="search ml-0 lg:ml-24 font-extrabold text-xl uppercase text-white"
+              class="search userLogSearch ml-0 lg:ml-24 flex items-center font-extrabold text-xl uppercase text-white"
+              data-show=".OverlaySearch"
             >
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <span
-                class="userLogSearch hidden lg:block"
-                data-show=".OverlaySearch"
-                >search here</span
-              >
+              <i class="fa-solid fa-magnifying-glass mr-2"></i>
+              <span class="hidden lg:block">search here</span>
             </div>
             <ul class="rounded-md">
               <li class="active"><a href="index.html">home</a></li>
@@ -85,7 +85,7 @@
               <!-- drop down  -->
               <li class="drop">
                 <button class="openDrop">blog</button>
-                <div class="flex flex-col contetnDrop rounded-md">
+                <div class="flex flex-col contetnDrop hideDrop rounded-md">
                   <a href="blog.html">blog</a>
                   <a href="blogSingle.html">blog Single</a>
                 </div>
@@ -106,12 +106,12 @@
           <h1 class="capitalize text-2xl text-white text-center">login now</h1>
           <form class="rounded-md mt-4">
             <div class="flex flex-col my-5">
-              <label class="">email address</label>
+              <label>email address</label>
               <input type="email" class="rounded-md" />
               <span>We'll never share your email with anyone else</span>
             </div>
             <div class="flex flex-col my-5">
-              <label class="">password</label>
+              <label>password</label>
               <input type="password" class="rounded-md" />
             </div>
             <div class="flex">
@@ -153,8 +153,24 @@
         <!-- end in search  -->
       </header>
     </section>
-
     <!-- ----------------- end in header ----------------- -->
+
+    <!-- --------------- start in header main --------------------- -->
+    <section class="bannerHead pt-40 pb-8 relative">
+      <nav class="flex flex-col items-center relative">
+        <h1 class="uppercase text-4xl font-semibold tracking-wider">
+          about us
+        </h1>
+        <div
+          class="pathHome flex justify-center items-center text-white uppercase my-2"
+        >
+          <h2 class="home cursor-pointer"><a href="index.html">home</a></h2>
+          <i class="fa fa-angle-double-right mx-2 text-center opacity-90"></i>
+          <h2>about</h2>
+        </div>
+      </nav>
+    </section>
+    <!-- --------------- end in header main --------------------- -->
 
     <!--  -->
     <section class="contentProductShop mx-auto px-4 lg:px-36">
@@ -164,7 +180,7 @@
         <div
           class="clearfix flex flex-col justify-center items-center lg:items-end my-5"
         >
-          <h1 class="total mb-3">Total: <span>177.16</span>€</h1>
+          <h1 class="total mb-3">Total: <span>177.16</span>$</h1>
           <a
             class="send cursor-pointer w-auto rounded-md capitalize text-center px-6 py-2"
             >send</a
@@ -278,6 +294,31 @@
       </div>
     </footer>
     <!--  ---------------------- end in footer -------------------- -->
+    <!-- button top -->
+    <div class="btnToTop">
+      <button>
+        <svg
+          version="1.1"
+          id="Capa_1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          width="30px"
+          height="30px"
+          viewBox="0 0 284.929 284.929"
+          style="enable-background: new 0 0 284.929 284.929"
+          xml:space="preserve"
+        >
+          <g>
+            <path
+              d="M282.082,195.285L149.028,62.24c-1.901-1.903-4.088-2.856-6.562-2.856s-4.665,0.953-6.567,2.856L2.856,195.285 C0.95,197.191,0,199.378,0,201.853c0,2.474,0.953,4.664,2.856,6.566l14.272,14.271c1.903,1.903,4.093,2.854,6.567,2.854 c2.474,0,4.664-0.951,6.567-2.854l112.204-112.202l112.208,112.209c1.902,1.903,4.093,2.848,6.563,2.848 c2.478,0,4.668-0.951,6.57-2.848l14.274-14.277c1.902-1.902,2.847-4.093,2.847-6.566 C284.929,199.378,283.984,197.188,282.082,195.285z"
+            />
+          </g>
+        </svg>
+      </button>
+    </div>
+    <!-- button top -->
     <script src="public/js/main.js"></script>
   </body>
 </html>

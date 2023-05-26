@@ -189,25 +189,78 @@ function styleCartShooping() {
 getInfoLocal();
 // ---------------------
 
+// ------------------------ main function -----------------------
+
 // check array is contain element
 let infoToArray = [];
 if (window.localStorage.getItem("item")) {
   infoToArray = JSON.parse(window.localStorage.getItem("item"));
 }
 
-let uniqueArray = [];
-let removeDuplicate = [];
-function makeUniquArray() {
-  infoToArray.forEach((ele) => {
-    if (!removeDuplicate.includes(ele.id)) {
-      removeDuplicate.push(ele.id);
-      uniqueArray.push(ele);
-    }
+function removeItemById() {
+  // حذف العناصر المتشابهة باستخدام `filter()`
+  infoToArray = infoToArray.filter((product, index, array) => {
+    return index === array.findIndex((prod) => prod.id === product.id);
   });
-  return uniqueArray;
 }
-// add inside unique array elemetn not repeat
-uniqueArray = makeUniquArray();
+
+function changeCountPriceMain() {
+  let changeCount = document.querySelectorAll(".countClothes");
+  changeCount.forEach((change) => {
+    change.onkeyup = function () {
+      // total number sum
+      sumNumbers();
+      // change count in input
+      let getId = change.closest("[data-id]").dataset.id;
+
+      infoToArray.forEach((objectChange) => {
+        if (objectChange.id == getId) {
+          //total price of the item
+          let placePrice = change
+            .closest(".mainProduct")
+            .querySelector(".price");
+          let subTotalPrice = objectChange.mainPrice * change.value;
+          placePrice.innerHTML = `${subTotalPrice}$`;
+          //
+          objectChange.count = change.value;
+          objectChange.price = subTotalPrice;
+          setInfoLocal(infoToArray);
+        }
+      });
+    };
+  });
+}
+
+function removeElementFromCart() {
+  let removeElement = document.querySelectorAll(".reomveElement");
+  removeElement.forEach((clickRemove) => {
+    clickRemove.addEventListener("click", () => {
+      let pareentListClothe = clickRemove.closest("[data-id]");
+      let getDataId = pareentListClothe.dataset.id;
+      pareentListClothe.remove();
+      reomveElementFromLocal(getDataId);
+      sumNumbers();
+    });
+  });
+}
+
+function reomveElementFromLocal(itemId) {
+  infoToArray = infoToArray.filter((item) => item.id != itemId);
+  setInfoLocal(infoToArray);
+}
+
+function setInfoLocal(informationLocal) {
+  window.localStorage.setItem("item", JSON.stringify(informationLocal));
+}
+
+function getInfoLocal() {
+  let dataItem = window.localStorage.getItem("item");
+  if (dataItem) {
+    let toJson = JSON.parse(dataItem);
+    setInformationToCart(toJson);
+  }
+}
+// ------------------------ main function -----------------------
 
 function getInforFromShooping() {
   let addToCarts = document.querySelectorAll(".addCart");
@@ -221,21 +274,23 @@ function getInforFromShooping() {
 
       let titleInfoCart =
         parrenCartShooping.querySelector(".productContent a").textContent;
+
       let priceInfoCart = parrenCartShooping.querySelector(
         ".priceCount .price span"
       ).textContent;
+      let toNumvetPrice = parseFloat(priceInfoCart.replace("$", ""));
 
       pushInfromationToArray(
         parrenCartShoopingId,
-        priceInfoCart,
+        toNumvetPrice,
         titleInfoCart,
         imagesCart
       );
 
-      makeUniquArray();
+      removeItemById();
 
-      setInformationToCart(uniqueArray);
-      setInfoLocal(uniqueArray);
+      setInformationToCart(infoToArray);
+      setInfoLocal(infoToArray);
     });
   });
 }
@@ -277,20 +332,27 @@ function previewInfoSetLocal(parentMainShop) {
 function previewInfoGetLocal() {
   let countPlace = document.querySelector(".storePreview .input-group-field");
 
-  if (countPlace) {
-    let getCount = localStorage.getItem("countPreivew");
-    let getCountToParse = JSON.parse(getCount); // to parse for get local
-    uniqueArray.forEach((objectCount) => {
-      if (objectCount.id == getCountToParse.id) {
-        countPlace.value = objectCount.count;
-        countPlace.onkeyup = function () {
-          objectCount.count = countPlace.value;
-          setInfoLocal(uniqueArray);
-        };
-      }
-    });
+  let getCount = localStorage.getItem("countPreivew");
+  if (countPlace && getCount && getCount !== "undefined") {
+    try {
+      let getCountToParse = JSON.parse(getCount); // to parse for get local
+      infoToArray.forEach((objectCount) => {
+        if (objectCount.id == getCountToParse.id) {
+          countPlace.value = objectCount.count;
+          countPlace.onkeyup = function () {
+            objectCount.count = countPlace.value;
+            setInfoLocal(infoToArray);
+          };
+        }
+      });
+    } catch (error) {
+      console.error("Error parsing JSON from localStorage:", error);
+    }
+  } else if (countPlace && getCount && getCount == "undefined") {
+    countPlace.style.display = "none";
   }
 }
+
 previewInfoGetLocal();
 
 function pushInfromationToArray(
@@ -343,68 +405,13 @@ function changeInfoInShooping() {
   changeCountPriceMain();
 }
 
-function changeCountPriceMain() {
-  let changeCount = document.querySelectorAll(".countClothes");
-  changeCount.forEach((change) => {
-    change.onkeyup = function () {
-      // change count in input
-      let getId = change.closest("[data-id]").dataset.id;
-
-      uniqueArray.forEach((objectChange) => {
-        if (objectChange.id == getId) {
-          //total price of the item
-          let placePrice = change
-            .closest(".mainProduct")
-            .querySelector(".price");
-          let subTotalPrice =
-            objectChange.mainPrice.match(/\d+/)[0] * change.value;
-          placePrice.innerHTML = `${subTotalPrice}$`;
-          //
-          objectChange.count = change.value;
-          objectChange.price = subTotalPrice;
-          setInfoLocal(uniqueArray);
-        }
-      });
-    };
-  });
-}
-
-function removeElementFromCart() {
-  let removeElement = document.querySelectorAll(".reomveElement");
-  removeElement.forEach((clickRemove) => {
-    clickRemove.addEventListener("click", () => {
-      let pareentListClothe = clickRemove.closest("[data-id]");
-      let getDataId = pareentListClothe.dataset.id;
-      pareentListClothe.remove();
-      reomveElementFromLocal(getDataId);
-    });
-  });
-}
-
-function reomveElementFromLocal(itemId) {
-  uniqueArray = uniqueArray.filter((item) => item.id != itemId);
-  setInfoLocal(uniqueArray);
-}
-
-function setInfoLocal(informationLocal) {
-  window.localStorage.setItem("item", JSON.stringify(informationLocal));
-}
-
-function getInfoLocal() {
-  let dataItem = window.localStorage.getItem("item");
-  if (dataItem) {
-    let toJson = JSON.parse(dataItem);
-    setInformationToCart(toJson);
-  }
-}
-
 // ------------- preview page --------------
 
 // ------------- start in my cart page --------------
 let itemsCart = document.querySelector(".itemsProduct");
 function showItemsCart() {
   if (itemsCart) {
-    uniqueArray.forEach((showCart) => {
+    infoToArray.forEach((showCart) => {
       itemsCart.innerHTML += `
             <article class="mainProduct product rounded-md mt-5 py-4" data-id="${showCart.id}">
             <figure>
@@ -444,7 +451,7 @@ function showItemsCart() {
   }
   changeInfoInMyCart();
   removeFromCart();
-  funTotalPrice();
+  sumNumbers();
 }
 showItemsCart();
 
@@ -456,14 +463,14 @@ function removeFromCart() {
   removeElementFromCart();
 }
 
-function funTotalPrice() {
-  let placeTotalPrice = document.querySelector(".total span");
-  let totalPrice = 0;
-  if (placeTotalPrice) {
-    uniqueArray.forEach((total) => {
-      totalPrice += total.price;
-      placeTotalPrice.innerHTML = totalPrice;
-    });
+function sumNumbers() {
+  let placeTotalPrice = document.querySelector(".total span"); // عنصر HTML لعرض المجموع الإجمالي
+  let total = 0;
+  for (let i = 0; i < infoToArray.length; i++) {
+    total += infoToArray[i].price;
   }
+  placeTotalPrice.innerHTML = total;
 }
+
+// placeTotalPrice.innerHTML = sumNumbers(); // حساب المجموع الإجمالي وعرضه في العنصر HTML
 // ------------- end in my cart page --------------

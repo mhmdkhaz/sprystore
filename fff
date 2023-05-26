@@ -1,0 +1,13 @@
+// let uniqueArray = [];
+// let removeDuplicate = [];
+// function makeUniquArray() {
+//   infoToArray.forEach((ele) => {
+//     if (!removeDuplicate.includes(ele.id)) {
+//       removeDuplicate.push(ele.id);
+//       uniqueArray.push(ele);
+//     }
+//   });
+//   return uniqueArray;
+// }
+// // add inside unique array elemetn not repeat
+// uniqueArray = makeUniquArray();

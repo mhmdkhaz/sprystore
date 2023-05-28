@@ -3,6 +3,7 @@ let openNavbar = document.querySelector(".openNav");
 let navbarList = document.querySelector("nav ul");
 openNavbar.addEventListener("click", () => {
   navbarList.classList.toggle("activeNav");
+  navbarList.classList.toggle("notActiveNav");
 });
 // start in drop
 let openDropdown = document.querySelector(".openDrop");
@@ -207,7 +208,7 @@ function removeItemById() {
 function changeCountPriceMain() {
   let changeCount = document.querySelectorAll(".countClothes");
   changeCount.forEach((change) => {
-    change.onkeyup = function () {
+    change.oninput = function () {
       // total number sum
       sumNumbers();
       // change count in input
@@ -466,10 +467,12 @@ function removeFromCart() {
 function sumNumbers() {
   let placeTotalPrice = document.querySelector(".total span"); // عنصر HTML لعرض المجموع الإجمالي
   let total = 0;
-  for (let i = 0; i < infoToArray.length; i++) {
-    total += infoToArray[i].price;
+  if (placeTotalPrice) {
+    for (let i = 0; i < infoToArray.length; i++) {
+      total += infoToArray[i].price;
+    }
+    placeTotalPrice.innerHTML = total;
   }
-  placeTotalPrice.innerHTML = total;
 }
 
 // placeTotalPrice.innerHTML = sumNumbers(); // حساب المجموع الإجمالي وعرضه في العنصر HTML
